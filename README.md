@@ -35,13 +35,11 @@ programming in style.
 
 Some setup you must do manually if you haven't yet:
 
-1. Ensure you have defined default url options in your environments files. Here is an example of default_url_options appropriate for a development environment in config/environments/development.rb:
+1. In production, :host should be set to the actual host of your application. Ensure you have defined default url options in your environments files. Here is an example of default_url_options appropriate for a development environment in config/environments/development.rb:
 
     ```ruby
     config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
     ```
-
-In production, :host should be set to the actual host of your application.
 
 2. Ensure you have defined root_url to *something* in your config/routes.rb. For example:
 
@@ -56,13 +54,11 @@ In production, :host should be set to the actual host of your application.
     <p class="alert"><%= alert %></p>
     ```
 
-4. If you are deploying on Heroku with Rails 3.2 only, you may want to set:
+4. On config/application.rb forcing your application to not access the DB or load models when precompiling your assets. If you are deploying on Heroku with Rails 3.2 only, you may want to set:
 
     ```ruby
     config.assets.initialize_on_precompile = false
     ```
-
-On config/application.rb forcing your application to not access the DB or load models when precompiling your assets.
 
 5. You can copy Devise views (for customization) to your app by running:
 
