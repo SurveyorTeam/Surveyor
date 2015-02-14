@@ -25,7 +25,6 @@ gem "title"
 gem "uglifier"
 gem "unicorn"
 gem "devise"
-gem 'rb-readline'
 
 group :development do
   gem "spring"
