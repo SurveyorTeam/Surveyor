@@ -26,6 +26,8 @@ gem "uglifier"
 gem "unicorn"
 gem "devise"
 gem 'rb-readline'
+gem 'faker'
+gem 'fabrication'
 
 group :development do
   gem "spring"

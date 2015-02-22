@@ -1,9 +1,9 @@
-class DeviseCreateResearchers < ActiveRecord::Migration
+class DeviseCreateResearchees < ActiveRecord::Migration
   def change
-    create_table(:researchers) do |t|
+    create_table(:researchees) do |t|
       ## Database authenticatable
-      t.string :first_name,         null: false, default: ""
-      t.string :last_name,           null: false, default: ""
+      t.string :first_name, null: false, default: ""
+      t.string :last_name, null: false, default: ""
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
 
@@ -21,11 +21,12 @@ class DeviseCreateResearchers < ActiveRecord::Migration
       t.inet     :current_sign_in_ip
       t.inet     :last_sign_in_ip
 
-      ##Reasercher relivant data
-      t.string :organization
-      #should add survey id in here somewhere, not sure how to do it yet though
-
-
+      ##Demographic info
+      t.string :gender
+      t.string :state
+      t.integer :age
+      t.integer :income
+      t.integer :education_level #on front end could be a string
       ## Confirmable
       # t.string   :confirmation_token
       # t.datetime :confirmed_at
@@ -41,9 +42,9 @@ class DeviseCreateResearchers < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :researchers, :email,                unique: true
-    add_index :researchers, :reset_password_token, unique: true
-    # add_index :researchers, :confirmation_token,   unique: true
-    # add_index :researchers, :unlock_token,         unique: true
+    add_index :researchees, :email,                unique: true
+    add_index :researchees, :reset_password_token, unique: true
+    # add_index :researchees, :confirmation_token,   unique: true
+    # add_index :researchees, :unlock_token,         unique: true
   end
 end
