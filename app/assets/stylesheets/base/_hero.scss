@@ -1,0 +1,31 @@
+.hero {
+  text-align: center;
+  padding-top: 10rem;
+
+  a {
+    font-size: $h4-font-size;
+    font-weight: 300;
+  }
+
+  button {
+    @include button(flat, $base-accent-color);
+    padding: .7rem 1rem;
+    margin: 1rem 1rem;
+    border-color: $base-accent-color;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    a, a:hover {
+      color: white;
+    }
+  }
+
+  .ghost {
+    background-color: $base-background-color;
+    border-color: $base-accent-color;
+    border-style: solid;
+    a, a:hover {
+      color: $base-accent-color;
+    }
+  }
+}

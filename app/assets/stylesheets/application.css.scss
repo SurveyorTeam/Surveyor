@@ -6,3 +6,8 @@
 @import "neat";
 @import "base/base";
 @import "refills/flashes";
+
+body {
+  @include outer-container;
+}
+
