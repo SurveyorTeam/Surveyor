@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150213003735) do
+ActiveRecord::Schema.define(version: 20150224035707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,7 +32,18 @@ ActiveRecord::Schema.define(version: 20150213003735) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
-  create_table "researchers", force: :cascade do |t|
+  create_table "projects", force: :cascade do |t|
+    t.integer  "researcher_id"
+    t.string   "project_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "projects", ["researcher_id"], name: "index_projects_on_researcher_id", using: :btree
+
+  create_table "researchees", force: :cascade do |t|
+    t.string   "first_name",             default: "", null: false
+    t.string   "last_name",              default: "", null: false
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -43,11 +54,48 @@ ActiveRecord::Schema.define(version: 20150213003735) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
+    t.string   "gender"
+    t.string   "state"
+    t.integer  "age"
+    t.integer  "income"
+    t.integer  "education_level"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "researchees", ["email"], name: "index_researchees_on_email", unique: true, using: :btree
+  add_index "researchees", ["reset_password_token"], name: "index_researchees_on_reset_password_token", unique: true, using: :btree
+
+  create_table "researchers", force: :cascade do |t|
+    t.string   "first_name",             default: "", null: false
+    t.string   "last_name",              default: "", null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
+    t.string   "organization"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "researchers", ["email"], name: "index_researchers_on_email", unique: true, using: :btree
   add_index "researchers", ["reset_password_token"], name: "index_researchers_on_reset_password_token", unique: true, using: :btree
+
+  create_table "surveys", force: :cascade do |t|
+    t.integer  "projects_id"
+    t.string   "survey_name"
+    t.string   "survey_question"
+    t.string   "survey_image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "surveys", ["projects_id"], name: "index_surveys_on_projects_id", using: :btree
 
 end
