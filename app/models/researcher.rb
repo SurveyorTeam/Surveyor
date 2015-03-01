@@ -4,4 +4,5 @@ class Researcher < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :projects
+  has_many :surveys, through: :projects
 end

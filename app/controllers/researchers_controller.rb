@@ -1,11 +1,14 @@
 class ResearchersController < ApplicationController
-  
-  def show
+  def home_page
     @current_user = current_researcher
-    puts "HERERERERE"
-    puts @current_user.email
-    puts @current_user.first_name
+    user_id = @current_user.id
+    @user_projects = Project.where(:researcher_id => @current_user.id)
+    @user_surveys = Array.new
+    @user_projects.each do |p|
+      surveys = Survey.where(:projects_id => p.id)
+      surveys.each do |s|
+        @user_surveys << s
+      end
+    end
   end
-
-
 end

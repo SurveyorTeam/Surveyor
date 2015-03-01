@@ -30,7 +30,7 @@ gem 'faker'
 gem 'fabrication'
 
 group :development do
-  gem "spring"
+  gem "spring", '>=1.3.3'
   gem "spring-commands-rspec"
   gem "web-console"
 end
