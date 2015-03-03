@@ -2,10 +2,13 @@ require 'rails_helper'
 
 RSpec.describe Study, :type => :model do
   it "should have a valid factory" do
-    FactoryGirl.build(:study).should be_valid
+    study = FactoryGirl.create(:study)
+    expect(study).to be_valid
   end
 
   it "should require a title" do
-    FactoryGirl.build(:study, :title => "").should_not be_valid
+    # `build' is used because it doesn't persist to disk, unlike `create'.
+    invalid_study = FactoryGirl.build(:study, :title => "")
+    expect(invalid_study).to_not be_valid
   end
 end
