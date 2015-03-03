@@ -17,10 +17,6 @@ label {
   font-weight: bold;
   margin-bottom: $base-spacing / 4;
 
-  &.required:after {
-    content: "*";
-  }
-
   abbr {
     display: none;
   }
