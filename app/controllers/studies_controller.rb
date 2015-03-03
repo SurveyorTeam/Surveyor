@@ -1,5 +1,6 @@
 class StudiesController < ApplicationController
   before_action :set_study, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /studies
   def index
