@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Study, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "should have a valid factory" do
+    FactoryGirl.build(:study).should be_valid
+  end
+
+  it "should require a title" do
+    FactoryGirl.build(:study, :title => "").should_not be_valid
+  end
 end
