@@ -1,0 +1,18 @@
+<%= simple_form_for(@survey) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :question %>
+    <strong>Select Study<strong><!--doesnt work -->
+    <select name="Study">
+    	<%= @current_studies.each do |study| %>
+    		<option value="<%=study.title%>"><%=study.title%></option>
+    	<%end%>
+    </select>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

@@ -5,6 +5,9 @@ class CreateStudies < ActiveRecord::Migration
       t.text :description
 
       t.timestamps null: false
+      t.belongs_to :user
+      #add_foreign_key :studies, :users
+      #add_reference :studies, :user, index: true
     end
   end
 end
