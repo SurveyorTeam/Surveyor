@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150304025536) do
+ActiveRecord::Schema.define(version: 20150306021556) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20150304025536) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
-  create_table "studies", force: :cascade do |t|
+  create_table "projects", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
     t.datetime "created_at",  null: false
@@ -40,29 +40,39 @@ ActiveRecord::Schema.define(version: 20150304025536) do
     t.integer  "user_id"
   end
 
+  create_table "questions", force: :cascade do |t|
+    t.integer  "order"
+    t.string   "text"
+    t.integer  "type"
+    t.string   "boolean_option_1"
+    t.string   "boolean_option_2"
+    t.integer  "range_min"
+    t.integer  "range_max"
+    t.integer  "survey_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  create_table "survey_responses", force: :cascade do |t|
+    t.string   "bool"
+    t.integer  "range_num"
+    t.integer  "text"
+    t.integer  "question_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "surveys", force: :cascade do |t|
-    t.string   "title"
-    t.string   "question"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "studies_id"
-    t.integer  "users_id"
+    t.string   "name"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "projects_id"
   end
-
-  create_table "user_responses", force: :cascade do |t|
-    t.string   "response"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "users_id"
-    t.integer  "studies_id"
-    t.integer  "surveys_id"
-  end
-
-  add_index "user_responses", ["surveys_id"], name: "index_user_responses_on_surveys_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
+    t.string   "name",                   default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
