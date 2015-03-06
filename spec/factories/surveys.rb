@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :survey do
-    title "MyString"
+    name "MyString"
   end
 
 end
