@@ -1,5 +1,5 @@
 require 'faker'
-#require 'fabricator_helper.rb'
+#require 'fabricator_helper.rb' #test for tiffany
 
 organizations = ['Brandeis','MIT','Scotland Yard','UMass','Berkley']
 Fabricator(:user) do
