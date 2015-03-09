@@ -1,13 +1,16 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
+  
   # GET /projects
   def index
-    @projects = Project.all
+    @projects = Project.where(:user_id => current_user.id)
   end
 
   # GET /projects/1
   def show
+    @current_project = Project.find(params[:id])
+    @current_surveys = Survey.where(:projects_id => @current_project.id)
   end
 
   # GET /projects/new

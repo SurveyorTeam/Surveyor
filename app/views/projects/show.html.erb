@@ -1,4 +1,25 @@
 <p id="notice"><%= notice %></p>
+<p><%= @current_project.title %></p>
+<p><%= @current_project.description %></p>
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @current_surveys.each do |survey| %>
+      <tr>
+        <td><%= link_to "#{survey.name}" , survey %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
+<%= link_to 'New', new_survey_path %>

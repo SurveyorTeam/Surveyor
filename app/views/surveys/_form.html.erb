@@ -2,12 +2,12 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :title %>
+    <%= f.input :name %>
     <%= f.input :question %>
-    <strong>Select Study<strong><!--doesnt work -->
-    <select name="Study">
-    	<%= @current_studies.each do |study| %>
-    		<option value="<%=study.title%>"><%=study.title%></option>
+    
+    <select name="Project">
+    	<%= @current_projects.each do |project| %>
+    		<option value="<%=project.title%>"><%=project.title%></option>
     	<%end%>
     </select>
   </div>

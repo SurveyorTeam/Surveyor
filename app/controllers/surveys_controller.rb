@@ -14,7 +14,7 @@ class SurveysController < ApplicationController
   # GET /surveys/new
   def new
     @survey = Survey.new
-    @current_studies = Study.where(:user_id=>current_user.id)
+    @current_projects = Project.where(:user_id => current_user.id)
   end
 
   # GET /surveys/1/edit
