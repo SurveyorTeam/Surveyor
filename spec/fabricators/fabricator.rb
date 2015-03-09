@@ -5,7 +5,7 @@ organizations = ['Brandeis','MIT','Scotland Yard','UMass','Berkley']
 Fabricator(:user) do
 	name{Faker::Name.first_name}
 	email{Faker::Internet.email}
-	password{Faker::Internet.password}
+	password{"password"}
 	#organization{organizations[rand(6)]}
 end
 Fabricator(:project) do

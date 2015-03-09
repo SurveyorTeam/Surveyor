@@ -14,4 +14,4 @@ Question.destroy_all
 15.times do Fabricate(:user) end
 50.times do Fabricate(:project) end
 150.times do Fabricate(:survey) end
-500.times do Fabricate(:question) end 
+#500.times do Fabricate(:question) end 
