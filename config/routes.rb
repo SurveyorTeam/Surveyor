@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   resources :survey_responses
 
   resources :responses
@@ -14,5 +15,6 @@ Rails.application.routes.draw do
   resources :studies
 
   devise_for :users
+  
 end
 
