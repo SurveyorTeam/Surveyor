@@ -1,5 +1,4 @@
 require 'faker'
-#require 'fabricator_helper.rb' #test for tiffany
 
 organizations = ['Brandeis','MIT','Scotland Yard','UMass','Berkley']
 Fabricator(:user) do
@@ -19,14 +18,20 @@ Fabricator(:survey) do
 end
 
 
-# Fabricator(:question) do
-#   the_question=question_manipulator()
-#   order{@order}
-#   text{the_question[0]}
-#   type{the_question[1]}
-#   boolean_option_1{the_question[2]}
-#   boolean_option_2{the_question[3]}
-#   range_min{the_question[4]}
-#   range_max{the_question[5]}
-#   survey_id{@current_survey}
-# end
+Fabricator(:question) do
+  order{rand(5)}
+  text{Faker::Company.catch_phrase}
+  kind{0}
+  boolean_option_1{nil}
+  boolean_option_2{nil}
+  range_min{nil}
+  range_max{nil}
+  survey_id{rand(150)+Survey.first.id}
+end
+
+Fabricator(:survey_response) do
+  bool{nil}
+  range_num{nil}
+  text{Faker::Lorem.sentence}
+  question_id{rand(500)+Question.first.id}
+end

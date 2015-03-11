@@ -3,7 +3,7 @@ class CreateQuestions < ActiveRecord::Migration
     create_table :questions do |t|
       t.integer :order
       t.string :text
-      t.integer :type
+      t.integer :kind
       t.string :boolean_option_1
       t.string :boolean_option_2
       t.integer :range_min

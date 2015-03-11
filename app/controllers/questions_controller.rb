@@ -8,6 +8,8 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1
   def show
+    @current_question = Question.find(params[:id])
+    @current_survey_responses = Survey_response.where(:question_id => @current_question.id)
   end
 
   # GET /questions/new

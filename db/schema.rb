@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20150306021556) do
   create_table "questions", force: :cascade do |t|
     t.integer  "order"
     t.string   "text"
-    t.integer  "type"
+    t.integer  "kind"
     t.string   "boolean_option_1"
     t.string   "boolean_option_2"
     t.integer  "range_min"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20150306021556) do
   create_table "survey_responses", force: :cascade do |t|
     t.string   "bool"
     t.integer  "range_num"
-    t.integer  "text"
+    t.string   "text"
     t.integer  "question_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
@@ -68,17 +68,6 @@ ActiveRecord::Schema.define(version: 20150306021556) do
     t.datetime "updated_at",  null: false
     t.integer  "projects_id"
   end
-
-  create_table "user_responses", force: :cascade do |t|
-    t.string   "response"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "users_id"
-    t.integer  "studies_id"
-    t.integer  "surveys_id"
-  end
-
-  add_index "user_responses", ["surveys_id"], name: "index_user_responses_on_surveys_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
