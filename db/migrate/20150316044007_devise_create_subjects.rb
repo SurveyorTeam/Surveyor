@@ -1,4 +1,4 @@
-class DeviseCreateUsers < ActiveRecord::Migration
+class DeviseCreateSubjects < ActiveRecord::Migration
   def change
     create_table(:subjects) do |t|
       ## Database authenticatable
