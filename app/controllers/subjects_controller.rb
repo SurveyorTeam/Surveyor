@@ -1,5 +1,6 @@
 class SubjectsController < ApplicationController
-  before_action :set_subject, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_subject!
 
   # GET /subjects
   def index

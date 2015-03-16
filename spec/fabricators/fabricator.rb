@@ -12,9 +12,19 @@ Fabricator(:project) do
 	description{Faker::Company.bs}
 	user_id{rand(15)+User.first.id}
 end
+
 Fabricator(:survey) do
 	name{Faker::Lorem.word}
 	projects_id{rand(50)+Project.first.id}
+  email{Faker::Internet.email}
+  name{Faker::Name.first_name}
+  password{"password"}
+  gender{rand(2)}
+  age{rand(50)+18}
+  education_level{rand(5)}
+  race{race[rand(3)]}
+  nationality{nationality[rand(3)]}
+  state{Faker::Address.state}
 end
 
 
@@ -34,4 +44,18 @@ Fabricator(:survey_response) do
   range_num{nil}
   text{Faker::Lorem.sentence}
   question_id{rand(500)+Question.first.id}
+end
+
+ race = ['Black', 'White', 'Blue']
+ nationality = ['American', 'British', 'Portuguese']
+Fabricator(:subject) do
+  email{Faker::Internet.email}
+  name{Faker::Name.first_name}
+  password{"password"}
+  gender{rand(2)}
+  age{rand(50)+18}
+  education_level{rand(5)}
+  race{race[rand(3)]}
+  nationality{nationality[rand(3)]}
+  state{Faker::Address.state}
 end
