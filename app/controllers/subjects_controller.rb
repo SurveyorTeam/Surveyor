@@ -4,7 +4,7 @@ class SubjectsController < ApplicationController
 
   # GET /subjects
   def index
-    @subjects = Subject.all
+    @surveys = Survey.all#change this to match surveys foreign key to response primary maybe
   end
 
   # GET /subjects/1

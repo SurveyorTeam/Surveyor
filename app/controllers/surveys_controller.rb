@@ -1,6 +1,11 @@
 class SurveysController < ApplicationController
   before_action :set_survey, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :signed_in 
+  # if !:get_signed_in
+  #   before_action :authenticate_user
+  #   before_action :authenticate_subject
+  # end
+
 
   # GET /surveys
   def index
@@ -22,7 +27,10 @@ class SurveysController < ApplicationController
   # GET /surveys/1/edit
   def edit
   end
-
+  def survey_respond
+    @current_survey = Survey.find(params[:id])
+    @current_questions = Question.where(:survey_id => @current_survey.id)
+  end
   # POST /surveys
   def create
     #@current_study = #{current_study} -- need to pass current study in, possibly when linking from creating a study
@@ -61,5 +69,9 @@ class SurveysController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def survey_params
       params.require(:survey).permit(:title, :question)
+    end
+
+    def get_signed_in
+      @signed_in = signed_in 
     end
 end

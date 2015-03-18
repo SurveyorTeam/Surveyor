@@ -4,6 +4,17 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
 
+  def signed_in 
+    signed_in = (user_signed_in? || subject_signed_in?) ? true : false
+    # retval = false
+    # if (user_signed_in? || subject_signed_in)
+    #   retval = true
+    # end
+    unless signed_in 
+      head(404)
+    end
+  end
+
   #These have been moved to their respective controllers:sessions
   # def after_sign_in_path_for(subjects)
   #   '/subjects'

@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Subjects</h1>
+<h1>Hello <%= current_subject.email%></h1>
 
 <table>
   <thead>
@@ -10,11 +10,9 @@
   </thead>
 
   <tbody>
-    <% @subjects.each do |subject| %>
+    <% @surveys.each do |survey| %>
       <tr>
-        <td><%= link_to 'Show', subject %></td>
-        <td><%= link_to 'Edit', edit_subject_path(subject) %></td>
-        <td><%= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to "Survey: #{survey.name}", survey %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,6 +20,5 @@
 
 <br>
 
-<%= link_to 'New Subject', new_subject_path %>
 <br>
 <%= link_to('Logout', destroy_subject_session_path, :method => :delete) %>
