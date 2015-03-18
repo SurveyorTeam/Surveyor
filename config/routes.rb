@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   resources :surveys 
 
-  get 'surveys/survey_respond/:id' => 'surveys#survey_respond'
+  get 'surveys/:id/survey_respond' => 'surveys#survey_respond'
   
   resources :user_responses
 
