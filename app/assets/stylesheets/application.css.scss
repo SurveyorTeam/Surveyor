@@ -14,7 +14,17 @@ body {
 // login view
 
 .login {
+  // positioning
   @include span-columns(6);
   @include shift(3);
   margin-top: 20vh;
+
+  // border
+  padding: 2em;
+  background-color: $light-gray;
+  border-radius: 4px;
+
+  h1, h2, h3 {
+    text-align: center;
+  }
 }
