@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
-  devise_for :subjects
+  devise_for :subjects, controllers: {
+    sessions:'subjects/sessions'
+  }
   
   resources :subjects
   
@@ -18,7 +20,9 @@ Rails.application.routes.draw do
 
   resources :studies
 
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+  }
   
 end
 
