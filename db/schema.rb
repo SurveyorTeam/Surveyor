@@ -90,8 +90,15 @@ ActiveRecord::Schema.define(version: 20150316044007) do
 
   create_table "surveys", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "gender"
+    t.integer  "age"
+    t.integer  "education_level"
+    t.integer  "income"
+    t.string   "race"
+    t.string   "nationality"
+    t.string   "state"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "projects_id"
   end
 

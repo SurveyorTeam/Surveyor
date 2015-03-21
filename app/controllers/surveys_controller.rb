@@ -31,6 +31,12 @@ class SurveysController < ApplicationController
     @current_survey = Survey.find(params[:id])
     @current_questions = Question.where(:survey_id => @current_survey.id)
   end
+  def submit_responses
+    text_responses = params['text']
+    Survey_response.add_responses(text_responses,'text')
+    #text_responses = params['bool'] you get the idea, one for each new implemented type of question
+    #QUestion.add_responses(bool_responses, 'bool')
+  end
   # POST /surveys
   def create
     #@current_study = #{current_study} -- need to pass current study in, possibly when linking from creating a study

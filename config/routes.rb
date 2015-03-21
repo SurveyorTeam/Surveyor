@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   
   resources :survey_responses
 
+  get '/submit_survey_responses' => 'surveys#submit_responses', as: :post
+
   resources :responses
 
   resources :questions

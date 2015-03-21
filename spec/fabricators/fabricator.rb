@@ -1,5 +1,6 @@
 require 'faker'
-
+race = ['Black', 'White', 'Blue']
+nationality = ['American', 'British', 'Portuguese']
 organizations = ['Brandeis','MIT','Scotland Yard','UMass','Berkley']
 Fabricator(:user) do
 	name{Faker::Name.first_name}
@@ -16,9 +17,6 @@ end
 Fabricator(:survey) do
 	name{Faker::Lorem.word}
 	projects_id{rand(50)+Project.first.id}
-  email{Faker::Internet.email}
-  name{Faker::Name.first_name}
-  password{"password"}
   gender{rand(2)}
   age{rand(50)+18}
   education_level{rand(5)}
@@ -46,8 +44,6 @@ Fabricator(:survey_response) do
   question_id{rand(500)+Question.first.id}
 end
 
- race = ['Black', 'White', 'Blue']
- nationality = ['American', 'British', 'Portuguese']
 Fabricator(:subject) do
   email{Faker::Internet.email}
   name{Faker::Name.first_name}
