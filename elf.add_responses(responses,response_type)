@@ -1,0 +1,28 @@
+[33m390a19e[m HEAD@{0}: pull origin B1: Fast-forward
+[33m1c26015[m HEAD@{1}: checkout: moving from master to B1
+[33m584aff6[m HEAD@{2}: commit: can now add text responses to questions, no link off the page it leads you to afterwards though, if anyone is feeling adventurous they could try to add other response type capability
+[33m390a19e[m HEAD@{3}: pull origin B1: Fast-forward
+[33m59533f2[m HEAD@{4}: commit: corrected error in subjects migration
+[33m567430e[m HEAD@{5}: commit: added subjects table, added demographic atributes to surveys
+[33m5413d01[m HEAD@{6}: pull: Fast-forward
+[33m3d76a0c[m HEAD@{7}: checkout: moving from B1 to master
+[33m1c26015[m HEAD@{8}: commit: i did the thing with the yml file despite the git ignore being up to date on it, reverted either way;
+[33m8536c3c[m HEAD@{9}: commit: fixed some attribute type errors in the schema, seeded teh databse fully, more or less, and can click all they way down to user responses. also i dont think i overwrote the git ignore thing here but if i did expectr another push in like 2 seconds
+[33mc55aaed[m HEAD@{10}: pull origin B1: Fast-forward
+[33m91a5b4b[m HEAD@{11}: commit: seed data for tests down to survey that relationally makes sense, commented out code and unreferenced file in fabricators for questions, was raising a cannot load such file exception, if someone gets it to load before i do im pretty sure it will generate questions properly as well and connect them to surveys
+[33med6d944[m HEAD@{12}: commit: set up the schema as we agreed, a couple column names are a bit more descriptive
+[33m9cf9c80[m HEAD@{13}: commit: consolidated and cleaned up db schema, added surveys, they have some problems with edits, not all info gets added to db when creating a survey, when anon commenting on one stuff is also dicey and incomplete, kinks here should be ironed out and this should be merged with main
+[33m3d76a0c[m HEAD@{14}: checkout: moving from B! to B1
+[33m3d76a0c[m HEAD@{15}: checkout: moving from master to B!
+[33m3d76a0c[m HEAD@{16}: pull: Fast-forward
+[33m9bcfebe[m HEAD@{17}: commit: pulled in devise controller and view files so they are actually in the app and we can see them, added a new model to db but didnt do anything with it, link to researcher homepage from mainpage, doesnt do auth yet, researcher homepage pulls more from database
+[33m4e72495[m HEAD@{18}: pull: Merge made by the 'recursive' strategy.
+[33me43f20c[m HEAD@{19}: commit: just getting it so current user has a view asigned to them, should change the route for it later though, also needs more complex controller logic for if no one is signed in
+[33m671347f[m HEAD@{20}: commit: set up the researcher/projects/survey models, plus relavant changes in migration files, relevant seed data to come
+[33mec138d4[m HEAD@{21}: pull: Fast-forward
+[33m0dcada3[m HEAD@{22}: commit: got rid of mysterious ~ appended files
+[33m556531b[m HEAD@{23}: commit: dumb changes made to yml file for local reasons removed
+[33mde248bb[m HEAD@{24}: commit (merge): altered researcher migration a little by adding a few columns, added a researchee mirgration and model, added ability to seed them with select data
+[33m2bc4326[m HEAD@{25}: commit: created the researchee table, modified researcher table, added ability to seed the, if the swap file or whatever gets in there ill kill it myself
+[33m923d27b[m HEAD@{26}: commit: added rb-readline to gemfile, so you might need to bundle install again, did it because otherwise setup yelled at me
+[33mc461892[m HEAD@{27}: clone: from https://github.com/SurveyorTeam/Surveyor.git
