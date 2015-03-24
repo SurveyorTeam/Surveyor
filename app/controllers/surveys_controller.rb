@@ -1,11 +1,7 @@
 class SurveysController < ApplicationController
   before_action :set_survey, only: [:show, :edit, :update, :destroy]
-  before_action :signed_in 
-  # if !:get_signed_in
-  #   before_action :authenticate_user
-  #   before_action :authenticate_subject
-  # end
-
+  before_action :signed_in
+  before_filter :user_only
 
   # GET /surveys
   def index
@@ -77,7 +73,13 @@ class SurveysController < ApplicationController
       params.require(:survey).permit(:title, :question)
     end
 
+    def user_only
+      unless current_user.user?
+        redirect_to :back, :alert => "You need to be a Researcher to access this page."
+      end
+    end
+
     def get_signed_in
-      @signed_in = signed_in 
+      @signed_in = signed_in
     end
 end
