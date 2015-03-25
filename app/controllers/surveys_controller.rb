@@ -1,7 +1,7 @@
 class SurveysController < ApplicationController
   before_action :set_survey, only: [:show, :edit, :update, :destroy]
-  before_action :signed_in
-  before_filter :user_only
+ # before_filter :authenticate_user! 
+  before_filter :user_only, :except => [:show, :survey_respond, :submit_responses]
 
   # GET /surveys
   def index
@@ -74,7 +74,9 @@ class SurveysController < ApplicationController
     end
 
     def user_only
-      unless current_user.user?
+      puts current_subject
+      puts "**************"
+      unless current_user.user? 
         redirect_to :back, :alert => "You need to be a Researcher to access this page."
       end
     end

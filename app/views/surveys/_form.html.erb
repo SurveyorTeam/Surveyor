@@ -3,13 +3,30 @@
 
   <div class="form-inputs">
     <%= f.input :name %>
-    
-    <select name="Project">
-    	<%= @current_projects.each do |project| %>
-    		<option value="<%=project.title%>"><%=project.title%></option>
-    	<%end%>
-    </select>
-  </div>
+</div>
+ <div class="input_fields_wrap">
+	 <button class="add_field_button"></button>
+	 <div><input type="text" name="text[]"></div>
+		
+</div>
+<script>
+ $(document).ready(function(){
+	 var wrapper = $(".input_fields_wrap");
+	 var add_button = $(".add_field_button");
+ 	 $(add_button).click(function(e){
+ 		e.preventDefault();
+		$(wrapper).append('<div><input type="text" name="text[]"/><a href="#" class="remove_field">Remove</a></div>');
+ 	}
+ });
+ </script>
+ 
+ <script>
+ $(wrapper).on("click",".remove_field",function(e){
+	 e.preventDefault():
+	 $(this).parent('div').remove();
+ }
+ </script> 
+
 
   <div class="form-actions">
     <%= f.button :submit %>
