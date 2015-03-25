@@ -17,6 +17,7 @@ class SurveysController < ApplicationController
   # GET /surveys/new
   def new
     @survey = Survey.new
+    @project_id = params[:id]
     @current_projects = Project.where(:user_id => current_user.id)
   end
 

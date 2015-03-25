@@ -14,11 +14,13 @@ Rails.application.routes.draw do
 
   resources :questions
 
-  resources :projects
+  resources :projects 
 
   resources :surveys 
 
   get 'surveys/:id/survey_respond' => 'surveys#survey_respond'
+  
+  get 'projects/:id/survey/new' => 'surveys#new'
   
   resources :user_responses
 

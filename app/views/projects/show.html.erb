@@ -19,7 +19,7 @@
     <% end %>
   </tbody>
 </table>
-
+<%= link_to 'New Survey', "#{@current_project.id}/survey/new"  %>
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
-<%= link_to 'New', new_survey_path %>
+<%# link_to 'New', new_survey_path %>
