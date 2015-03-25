@@ -17,6 +17,7 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
+    @user_id = current_user.id
   end
 
   # GET /projects/1/edit
@@ -31,6 +32,7 @@ class ProjectsController < ApplicationController
       redirect_to @project, notice: 'Project was successfully created.'
     else
       render :new
+      puts "fail"
     end
   end
 
@@ -62,7 +64,8 @@ class ProjectsController < ApplicationController
     end
 
     # Only allow a trusted parameter "white list" through.
-    def project_params
-      params[:project]
+    def project_params 
+      #params[:project]
+      params.require(:project).permit(:title, :description, :user_id)
     end
 end
