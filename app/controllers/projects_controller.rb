@@ -23,7 +23,10 @@ class ProjectsController < ApplicationController
   # GET /projects/1/edit
   def edit
   end
-
+  def create_survey
+    puts "********212121****"
+    puts params
+  end
   # POST /projects
   def create
     @project = Project.new(project_params)
