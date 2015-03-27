@@ -1,7 +1,8 @@
 class SurveysController < ApplicationController
   before_action :set_survey, only: [:show, :edit, :update, :destroy]
- # before_filter :authenticate_user! 
-  before_filter :user_only, :except => [:show, :survey_respond, :submit_responses]
+  #before_action :authenticate_user! 
+  before_action :user_only, :except => [:show, :survey_respond, :submit_responses]
+  #before_action :user_only, except: [:show, :survey_respond, :submit_responses]
 
   # GET /surveys
   def index
@@ -23,11 +24,14 @@ class SurveysController < ApplicationController
 
   # GET /surveys/1/edit
   def edit
+    
   end
-  # def create_survey
-  #   puts "********212121****"
-  #   puts params
-  # end
+  
+  def create_survey
+    puts "********212121****"
+    puts params
+  end
+  
   def survey_respond
     @current_survey = Survey.find(params[:id])
     @current_questions = Question.where(:survey_id => @current_survey.id)

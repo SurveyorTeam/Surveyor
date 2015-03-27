@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user! 
 
   # GET /questions
   def index
@@ -17,7 +18,7 @@ class QuestionsController < ApplicationController
     @question = Question.new
   end
 
-  # GET /questions/1/edit
+  # GET /questions/1/editrequire "questions_controller"
   def edit
   end
 
@@ -56,5 +57,11 @@ class QuestionsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def question_params
       params[:question]
+    end
+    
+    def user_only
+      unless current_user.user? 
+        redirect_to :back, :alert => "You need to be a Researcher to access this page."
+      end
     end
 end
