@@ -1,15 +1,18 @@
 <%= form_tag("/create_survey", method: "get") do %>
 
   <div class="form-inputs">
-    <%= text_field_tag :name %>
+	  Survey Name:
+	  <br>
+    <%= text_field_tag "description" %>
 	
 </div>
+Questions:
  <div class="input_fields_wrap">
-	 <button class="add_field_button">Add a Field</button>
 	 <div><input type="text" name="text[]"></div>
+	 <button class="add_field_button">New Question</button>
 		
 </div>
-  <%= text_field_tag :project_id, :as => :hidden, :input_html => { :value => "#{@project_id}" } %>
+  <% text_field_tag :project_id, :as => :hidden, :input_html => { :value => "#{@project_id}" } %>
   <div class="form-actions">
     <%= submit_tag :submit %>
   </div>
