@@ -24,12 +24,14 @@
 
 <% if user_signed_in?  %>
 <%= link_to 'Edit', edit_survey_path(@survey) %> |
-<%= link_to 'Back', survey_path %>
+<%= link_to 'Back', project_path(@current_project) %>
 <%end%>
 
 <% if subject_signed_in? %>
-<%= link_to 'Respond', "/surveys/#{@survey.id}/survey_respond" %>
+<%= link_to 'Respond', "/surveys/#{@survey.id}/survey_respond" %> ||
 <%= link_to 'Back', "/subjects" %>
+<br>
+<%= link_to('Logout', destroy_subject_session_path, :method => :delete) %>
 <%end%>
 
 

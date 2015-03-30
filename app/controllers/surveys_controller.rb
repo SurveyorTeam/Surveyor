@@ -12,6 +12,7 @@ class SurveysController < ApplicationController
   # GET /surveys/1
   def show
     @current_survey = Survey.find(params[:id])
+    @current_project = Project.find(@current_survey.projects_id)
     @current_questions = Question.where(:survey_id => @current_survey.id)
   end
 

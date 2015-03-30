@@ -27,4 +27,8 @@
   </tbody>
 </table>
 <%= submit_tag("Submit Responses") %>
+<br>
+<%= link_to 'Back', "/subjects" %>
+<br>
+<%= link_to('Logout', destroy_subject_session_path, :method => :delete) %>
 <%end%>
