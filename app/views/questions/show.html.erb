@@ -12,9 +12,10 @@
     <% @current_survey_responses.each do |response| %>
       <tr>
         <td><%=  "#{response.text}"  %></td>
+		<td><%= link_to 'Destroy', response, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 <%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', survey_path(@current_survey)%>
+<%= link_to 'Back', survey_path(@current_survey) %>

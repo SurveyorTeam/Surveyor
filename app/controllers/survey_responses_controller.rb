@@ -42,7 +42,8 @@ class SurveyResponsesController < ApplicationController
   # DELETE /survey_responses/1
   def destroy
     @survey_response.destroy
-    redirect_to survey_responses_url, notice: 'Survey response was successfully destroyed.'
+    @current_question = Question.find(@survey_response.question_id)
+    redirect_to question_path(@current_question), notice: 'Survey response was successfully destroyed.'
   end
 
   private

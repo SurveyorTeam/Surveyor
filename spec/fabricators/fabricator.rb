@@ -28,7 +28,7 @@ end
 
 Fabricator(:question) do
   order{rand(5)}
-  text{Faker::Company.catch_phrase}
+  text{Faker::Company.catch_phrase+"?"}
   kind{0}
   boolean_option_1{nil}
   boolean_option_2{nil}
