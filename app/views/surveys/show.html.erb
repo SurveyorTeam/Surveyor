@@ -24,7 +24,7 @@
 
 <% if user_signed_in?  %>
 <%= link_to 'Edit', edit_survey_path(@survey) %> |
-<%= link_to 'Back', project_path(@current_project) %>
+<%= link_to 'Back', project_path(@current_project) %> |
 <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
 <%end%>
 
