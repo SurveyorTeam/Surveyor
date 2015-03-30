@@ -20,7 +20,7 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1/editrequire "questions_controller"
   def edit
-   # @current_survey = Survey.find(@question.id)
+   # @current_question = Question.find(@question.id)
     
   end
 
