@@ -24,9 +24,12 @@
 
 <% if user_signed_in?  %>
 <%= link_to 'Edit', edit_survey_path(@survey) %> |
+<%= link_to 'Back', survey_path %>
 <%end%>
 
 <% if subject_signed_in? %>
 <%= link_to 'Respond', "/surveys/#{@survey.id}/survey_respond" %>
+<%= link_to 'Back', "/subjects" %>
 <%end%>
-<%= link_to 'Back', survey_path %>
+
+
