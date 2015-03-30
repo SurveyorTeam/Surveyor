@@ -11,6 +11,7 @@ class QuestionsController < ApplicationController
   def show
     @current_question = Question.find(params[:id])
     @current_survey_responses = Survey_response.where(:question_id => @current_question.id)
+    @current_survey = Survey.find(@current_question.survey_id)
   end
 
   # GET /questions/new
