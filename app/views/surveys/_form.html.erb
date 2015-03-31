@@ -1,23 +1,21 @@
-<%= form_tag("/create_survey", method: "get") do %>
+<%= simple_form_for(@survey, :url => "/create_survey",:html => {:method => :get}) do |f| %>
 
   <div class="form-inputs">
 	  Survey Name:
 	  <br>
-    <%= text_field_tag "description" %>
+    <%= f.text_field :name %>
 	
 </div>
 Questions:
  <div class="input_fields_wrap">
 	 <div><input type="text" name="text[]"></div>
-	 <button class="add_field_button">New Question</button>
-		
 </div>
-  <% text_field_tag :project_id, :as => :hidden, :input_html => { :value => "#{@project_id}" } %>
+  <%= f.input :projects_id,:as => :hidden,  :input_html => { :value => "#{@project_id}" } %>
+  <button class="add_field_button">New Question</button>
   <div class="form-actions">
-    <%= submit_tag :submit %>
+    <%= f.submit :submit %>
   </div>
 <% end %>
-
 <script type='text/javascript'>
 	$(".add_field_button").on("click",function(e){
 		e.preventDefault();

@@ -61,7 +61,7 @@ class QuestionsController < ApplicationController
     def question_params
       params[:question]
       #params.require(:project).permit(:title, :description, :user_id)
-      params.require(:question).permit(:text)
+      params.require(:question).permit(:text,:kind,:survey_id)
     end
     
     def user_only

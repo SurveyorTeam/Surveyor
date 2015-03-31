@@ -20,6 +20,7 @@ class SurveysController < ApplicationController
   def new
     @survey = Survey.new
     @project_id = params[:id]
+    puts "HEREHREHRHEHRHEHR #{@project_id}"
     @current_projects = Project.where(:user_id => current_user.id)
   end
 
@@ -43,11 +44,8 @@ class SurveysController < ApplicationController
   # POST /surveys
   
   def create
-    #@current_study = #{current_study} -- need to pass current study in, possibly when linking from creating a study
-    #doesn't properly do studies either yet
-    #fix later
     @survey = Survey.new(survey_params)
-
+    #will need more catagories for hash searches as include more questions
     if @survey.save
       redirect_to @survey, notice: 'survey was successfully created.'
     else
@@ -56,9 +54,15 @@ class SurveysController < ApplicationController
  end
   
   def create_survey
-    @survey = Survey.new(survey_params) 
-    
+  @survey = Survey.new(survey_params)
+    #will need more catagories for hash searches as include more questions
+    #also doesn't do order yet, how???
+    text_questions = params["text"]
     if @survey.save
+          text_questions.each do |t|
+            puts "MAKING A QUESTION at #{@survey.id}"
+            new_question = Question.create(:text =>t, :kind =>1, :survey_id => @survey.id)
+          end
       redirect_to @survey, notice: 'survey was successfully created.'
     else
       render :new
@@ -89,10 +93,7 @@ class SurveysController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def survey_params
-      puts "********88*********"
-      puts params.inspect
-     puts "********88*********"
-     params.require(:description).permit(:text)
+     params.require(:survey).permit(:name, :text, :projects_id)
     end
 
     def user_only
