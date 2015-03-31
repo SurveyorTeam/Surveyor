@@ -1,0 +1,15 @@
+<%= simple_form_for(@demographic) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :gender %>
+    <%= f.input :age %>
+    <%= f.input :education %>
+    <%= f.input :nationality %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

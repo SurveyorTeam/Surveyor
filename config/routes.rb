@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :demographics
+
   devise_for :subjects, controllers: {
     sessions:'subjects/sessions'
   }

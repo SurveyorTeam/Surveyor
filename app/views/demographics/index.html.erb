@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Demographics</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Age</th>
+      <th>Education</th>
+      <th>Nationality</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @demographics.each do |demographic| %>
+      <tr>
+        <td><%= demographic.name %></td>
+        <td><%= demographic.gender %></td>
+        <td><%= demographic.age %></td>
+        <td><%= demographic.education %></td>
+        <td><%= demographic.nationality %></td>
+        <td><%= link_to 'Show', demographic %></td>
+        <td><%= link_to 'Edit', edit_demographic_path(demographic) %></td>
+        <td><%= link_to 'Destroy', demographic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Demographic', new_demographic_path %>
