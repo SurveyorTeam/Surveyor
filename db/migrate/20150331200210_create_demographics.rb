@@ -3,7 +3,7 @@ class CreateDemographics < ActiveRecord::Migration
     create_table :demographics do |t|
       t.string :name
       t.integer :gender
-      t.income :age
+      t.integer :age
       t.integer :education
       t.string :nationality
 

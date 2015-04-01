@@ -1,5 +1,6 @@
 class DemographicsController < ApplicationController
   before_action :set_demographic, only: [:show, :edit, :update, :destroy]
+  # before_action :authenticate_subject!
 
   # GET /demographics
   def index
