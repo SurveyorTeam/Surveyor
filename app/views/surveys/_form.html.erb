@@ -8,7 +8,7 @@
 </div>
 Questions:
  <div class="input_fields_wrap">
-	 <div><input type="text" name="text[]"></div>
+	 <div><input type="text" name="text[0]"></div>
 </div>
   <%= f.input :projects_id,:as => :hidden,  :input_html => { :value => "#{@project_id}" } %>
   <button class="add_field_button">New Question</button>
@@ -17,9 +17,11 @@ Questions:
   </div>
 <% end %>
 <script type='text/javascript'>
+var counter=0
 	$(".add_field_button").on("click",function(e){
 		e.preventDefault();
-		$(".input_fields_wrap").append("<div><input type='text' name='text[]'/><a href='#' class='remove_field'>Remove</a></div>");
+		counter++;
+		$(".input_fields_wrap").append("<div><input type='text' name='text["+counter+"]'/><a href='#' class='remove_field'>Remove</a></div>");
 	});
  </script>
  

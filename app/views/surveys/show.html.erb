@@ -1,38 +1,40 @@
-<p id="notice"><%= notice %></p>
+<div class = "yoseph_test">
 
-<p>
-  <strong>Name:</strong>
-  <%= @survey.name %>
-</p>
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <strong>Name:</strong>
+    <%= @survey.name %>
+  </p>
 
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @current_questions.each do |question| %>
+  <table>
+    <thead>
       <tr>
-        <td><%= link_to "#{question.text}" , question %></td>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<% if user_signed_in?  %>
-<%= link_to 'Edit', edit_survey_path(@survey) %> |
-<%= link_to 'Back', project_path(@current_project) %> |
-<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-<%end%>
+    <tbody>
+      <% @current_questions.each do |question| %>
+        <tr>
+          <td><%= link_to "#{question.text}" , question %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<% if subject_signed_in? %>
-<%= link_to 'Respond', "/surveys/#{@survey.id}/survey_respond" %> ||
-<%= link_to 'Back', "/subjects" %>
-<br>
-<%= link_to('Logout', destroy_subject_session_path, :method => :delete) %>
-<%end%>
+  <% if user_signed_in?  %>
+  <%= link_to 'Edit', edit_survey_path(@survey) %> |
+  <%= link_to 'Back', project_path(@current_project) %> |
+  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+  <%end%>
 
+  <% if subject_signed_in? %>
+  <%= link_to 'Respond', "/surveys/#{@survey.id}/survey_respond" %> ||
+  <%= link_to 'Back', "/subjects" %>
+  <br>
+  <%= link_to('Logout', destroy_subject_session_path, :method => :delete) %>
+  <%end%>
 
+</div>

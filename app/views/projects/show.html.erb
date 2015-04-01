@@ -1,27 +1,36 @@
-<p id="notice"><%= notice %></p>
-<p><%= @current_project.title %></p>
-<p><%= @current_project.description %></p>
+<div class = "yoseph_test">
+
+  <p id="notice"><%= notice %></p>
+
+  <p><h2><%= @current_project.title %></h2></p>
+  <p><h4><%= @current_project.description %></h4></p>
 
 
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @current_surveys.each do |survey| %>
+  <table>
+    <thead>
       <tr>
-        <td><%= link_to "#{survey.name}" , survey %></td>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= link_to 'New Survey', "#{@current_project.id}/survey/new"  %>
-<br>
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %> |
-<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-<%# link_to 'New', new_survey_path %>
+    </thead>
+
+    <tbody>
+      <% @current_surveys.each do |survey| %>
+        <tr>
+          <td><%= link_to "#{survey.name}" , survey %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+
+  <hr>
+  
+  <%= link_to 'New Survey', "#{@current_project.id}/survey/new"  %>
+  <br>
+  <%= link_to 'Edit', edit_project_path(@project) %> |
+  <%= link_to 'Back', projects_path %> |
+  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+  <%# link_to 'New', new_survey_path %>
+
+</div>
