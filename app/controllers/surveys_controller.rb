@@ -54,6 +54,7 @@ class SurveysController < ApplicationController
  end
   
   def create_survey
+    puts "******************", params.inspect, "*****************"
   @survey = Survey.new(survey_params)
     #will need more catagories for hash searches as include more questions
     #also doesn't do order yet, how???
