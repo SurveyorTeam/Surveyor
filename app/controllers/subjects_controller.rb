@@ -1,3 +1,6 @@
+require 'pry'
+require 'byebug'
+
 class SubjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_subject!
@@ -25,7 +28,7 @@ class SubjectsController < ApplicationController
     @subject = Subject.new(subject_params)
 
     if @subject.save
-      redirect_to @subject, notice: 'Subject was successfully created.'
+      redirect_to new_demographics_path, notice: 'Subject was successfully created.'
     else
       render :new
     end
