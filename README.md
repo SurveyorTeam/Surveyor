@@ -1,5 +1,7 @@
 # Surveyor
 
+[![Code Climate](https://codeclimate.com/github/SurveyorTeam/Surveyor/badges/gpa.svg)](https://codeclimate.com/github/SurveyorTeam/Surveyor)
+
 ## Getting Started
 
 After you have cloned this repo, run this setup script to set up your machine
