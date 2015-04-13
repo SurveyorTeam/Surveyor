@@ -85,4 +85,6 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.default_url_options = { host: ENV.fetch("HOST") }
+  
+  config.secret_key = '6bb9ef9e6b0bd924612b34482d01d591826424999a56485c2add57d03e54ce31a216324ff0eda5c204e8e972bfe4d2c13674dc0534b5085a2da65e367be20e79'
 end
