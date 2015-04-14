@@ -1,11 +1,11 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
- # before_action :authenticate_researcher!
-  #before_filter :researcher_only
+  before_action :authenticate_user!
+  before_filter :user_only
 
   # GET /projects
   def index
-    @projects = Project.where(:user_id => current_researcher.id)
+    @projects = Project.where(:user_id => current_user.id)
   end
 
   # GET /projects/1
@@ -56,14 +56,14 @@ class ProjectsController < ApplicationController
       @project = Project.find(params[:id])
     end
 
-    def researcher_only
-      unless current_researcher.researcher?
+    def user_only
+      unless current_user.user?
         redirect_to :back, :alert => "You need to be a Researcher to access this page."
       end
     end
 
     # Only allow a trusted parameter "white list" through.
-    def project_params
+    def project_params 
       #params[:project]
       params.require(:project).permit(:title, :description, :user_id)
     end
