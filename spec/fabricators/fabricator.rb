@@ -37,7 +37,7 @@ Fabricator(:question) do
   survey_id{rand(150)+Survey.first.id}
 end
 
-Fabricator(:survey_response) do
+Fabricator(:SurveyResponse) do
   bool{nil}
   range_num{nil}
   text{Faker::Lorem.sentence}

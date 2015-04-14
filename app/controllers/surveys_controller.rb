@@ -14,13 +14,26 @@ class SurveysController < ApplicationController
     @current_survey = Survey.find(params[:id])
     @current_project = Project.find(@current_survey.projects_id)
     @current_questions = Question.where(:survey_id => @current_survey.id)
+    # @ordered_questions = Hash.new
+    # puts "***************"
+    # @current_questions.each do |q|
+    #   puts q.text
+    #   q.text = q.text.gsub!("\"",'')
+    #   q.text = q.text.gsub!("]",'')
+    #   q.text = q.text.gsub!("[",'')
+    #   q.text = q.text.split(",")
+    #   puts q.text.class
+    #   puts q.text
+    #   #@ordered_questions[q.text[1].to_i] = q.text[2]
+    # end
+    # puts "***************"
+    # puts @ordered_questions["1"]
   end
 
   # GET /surveys/new
   def new
     @survey = Survey.new
     @project_id = params[:id]
-    puts "HEREHREHRHEHRHEHR #{@project_id}"
     @current_projects = Project.where(:user_id => current_user.id)
   end
 
@@ -54,14 +67,12 @@ class SurveysController < ApplicationController
  end
   
   def create_survey
-    puts "******************", params.inspect, "*****************"
   @survey = Survey.new(survey_params)
     #will need more catagories for hash searches as include more questions
     #also doesn't do order yet, how???
     text_questions = params["text"]
     if @survey.save
           text_questions.each do |t|
-            puts "MAKING A QUESTION at #{@survey.id}"
             new_question = Question.create(:text =>t, :kind =>1, :survey_id => @survey.id)
           end
       redirect_to @survey, notice: 'survey was successfully created.'
@@ -98,8 +109,6 @@ class SurveysController < ApplicationController
     end
 
     def user_only
-      puts current_subject
-      puts "**************"
       unless current_user.user? 
         redirect_to :back, :alert => "You need to be a Researcher to access this page."
       end
