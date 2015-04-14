@@ -11,11 +11,11 @@ Project.destroy_all
 Survey.destroy_all
 Question.destroy_all
 Survey_response.destroy_all
-Subject.destroy_all
+# Subject.destroy_all
 
-100.times do Fabricate(:subject) end
+# 100.times do Fabricate(:subject) end
 15.times do Fabricate(:user) end
 50.times do Fabricate(:project) end
 150.times do Fabricate(:survey) end
-500.times do Fabricate(:question) end 
+500.times do Fabricate(:question) end
 1500.times do Fabricate(:survey_response) end
