@@ -4,10 +4,10 @@ class User < ActiveRecord::Base
   has_many :studies
   has_many :surveys, through: :study
 
-  enum role: [:user, :subject]
+  enum role: [:researcher, :subject]
   after_initialize :set_default_role, :if => :new_record?
 
   def set_default_role
-    self.role ||= :user
+    self.role ||= :researcher
   end
 end
