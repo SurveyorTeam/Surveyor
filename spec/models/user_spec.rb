@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe User, :type => :model do
-  it { should have_many(:studies) }
-  it { should have_many(:surveys).through(:studies) }
+  it { should have_many(:projects) }
+  it { should have_many(:surveys).through(:projects) }
 
   it "should have a valid factory" do
     user = FactoryGirl.build_stubbed(:user)

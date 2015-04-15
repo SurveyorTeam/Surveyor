@@ -122,17 +122,6 @@ ActiveRecord::Schema.define(version: 20150414012551) do
     t.integer  "projects_id"
   end
 
-  create_table "user_responses", force: :cascade do |t|
-    t.string   "response"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "users_id"
-    t.integer  "studies_id"
-    t.integer  "surveys_id"
-  end
-
-  add_index "user_responses", ["surveys_id"], name: "index_user_responses_on_surveys_id", using: :btree
-
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
