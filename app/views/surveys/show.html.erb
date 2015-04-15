@@ -19,7 +19,7 @@
     <br>
       <% @current_questions.each do |question| %>
         <tr>
-          <td><%= link_to "#{question.text[1]}" , question %></td>
+          <td><%= link_to "#{question.text}" , question %></td>
         </tr>
       <% end %>
     </tbody>

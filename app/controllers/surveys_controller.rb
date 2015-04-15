@@ -70,10 +70,21 @@ class SurveysController < ApplicationController
   @survey = Survey.new(survey_params)
     #will need more catagories for hash searches as include more questions
     #also doesn't do order yet, how???
+    puts "********************************************"
+    puts params
     text_questions = params["text"]
+    bool_questions = params["bool_text"]
+    bool_choice1 = params["bool_choice1"]
+    bool_choice2 = params["bool_choice2"]
     if @survey.save
           text_questions.each do |t|
-            new_question = Question.create(:text =>t, :kind =>1, :survey_id => @survey.id)
+            new_text_question = Question.create(:text =>t, :kind =>0, :survey_id => @survey.id)
+          end
+          if bool_questions.length > 1 
+            puts "DOING BOOLS SO PHUN"
+            (1..bool_questions.length-1).each do |i|
+              new_bool_question = Question.create(:text=>bool_questions[i], :kind => 1,:boolean_option_1 => bool_choice1[i], :boolean_option_2 => bool_choice2[i],:survey_id => @survey.id)
+            end
           end
       redirect_to @survey, notice: 'survey was successfully created.'
     else

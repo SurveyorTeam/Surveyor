@@ -8,10 +8,14 @@
 </div>
 Questions:
  <div class="input_fields_wrap">
-	 <div><input type="text" name="text[0]"></div>
+	 <div>Text Question:<input type="text" name="text[]"></div>
+	 <div><input style="display:none;" type="text" name="bool_text[]"></div>
+	 <div><input style="display:none;" type="text" name="bool_choice1[]"></div>
+	 <div><input style="display:none;" type="text" name="bool_choice2[]"></div>
 </div>
   <%= f.input :projects_id,:as => :hidden,  :input_html => { :value => "#{@project_id}" } %>
   <button class="add_field_button">New Question</button>
+  <button class="add_field_button_bool">New True/False Question</button>
   <div class="form-actions">
     <%= f.submit :submit %>
   </div>
@@ -20,8 +24,11 @@ Questions:
 var counter=0
 	$(".add_field_button").on("click",function(e){
 		e.preventDefault();
-		counter++;
-		$(".input_fields_wrap").append("<div><input type='text' name='text["+counter+"]'/><a href='#' class='remove_field'>Remove</a></div>");
+		$(".input_fields_wrap").append("<div>Text Question:<input type='text' name='text[]'/><a href='#' class='remove_field'>Remove</a></div>");
+	});
+	$(".add_field_button_bool").on("click", function(e){
+		e.preventDefault();
+		$(".input_fields_wrap").append("<div>True/False Prompt <input type='text' name='bool_text[]' />Choice 1<input type='text' name='bool_choice1[]' />Choice 2<input type='text' name='bool_choice2[]' /><a href='#' class='remove_field'>Remove</a></div>");
 	});
  </script>
  

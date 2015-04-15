@@ -9,9 +9,15 @@
   </thead>
 
   <tbody>
+  <% bool_1 = 0 %>
+  <% bool_2 = 0 %>
     <% @current_survey_responses.each do |response| %>
       <tr>
-        <td><%=  "#{response.text}"  %></td>
+        <% if @current_question.kind == 0 %>
+          <td><%=  "#{response.text}"  %></td>
+        <% end %>
+<!--           <% if @current_question.kind == 1 %>
+          <% end %> when can submit survey responses to bools -->
 		<td><%= link_to 'Destroy', response, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
