@@ -1,8 +1,7 @@
 class SurveysController < ApplicationController
   before_action :set_survey, only: [:show, :edit, :update, :destroy]
-  #before_action :authenticate_user! 
-  before_action :user_only, :except => [:show, :survey_respond, :submit_responses]
-  #before_action :user_only, except: [:show, :survey_respond, :submit_responses]
+  #before_action :authenticate_user!
+  before_action :researcher_only, :except => [:show, :survey_respond, :submit_responses]
 
   # GET /surveys
   def index
@@ -21,28 +20,28 @@ class SurveysController < ApplicationController
     @survey = Survey.new
     @project_id = params[:id]
     puts "HEREHREHRHEHRHEHR #{@project_id}"
-    @current_projects = Project.where(:user_id => current_user.id)
+    @current_projects = Project.where(:user_id => current_researcher.id)
   end
 
   # GET /surveys/1/edit
   def edit
-    
+
   end
-  
+
   def survey_respond
     @current_survey = Survey.find(params[:id])
     @current_questions = Question.where(:survey_id => @current_survey.id)
   end
-  
+
   def submit_responses
     text_responses = params['text']
     Survey_response.add_responses(text_responses,'text')
     #text_responses = params['bool'] you get the idea, one for each new implemented type of question
     #QUestion.add_responses(bool_responses, 'bool')
   end
-  
+
   # POST /surveys
-  
+
   def create
     @survey = Survey.new(survey_params)
     #will need more catagories for hash searches as include more questions
@@ -50,9 +49,9 @@ class SurveysController < ApplicationController
       redirect_to @survey, notice: 'survey was successfully created.'
     else
      render :new
-   end
- end
-  
+    end
+  end
+
   def create_survey
     puts "******************", params.inspect, "*****************"
   @survey = Survey.new(survey_params)
@@ -60,10 +59,9 @@ class SurveysController < ApplicationController
     #also doesn't do order yet, how???
     text_questions = params["text"]
     if @survey.save
-          text_questions.each do |t|
-            puts "MAKING A QUESTION at #{@survey.id}"
-            new_question = Question.create(:text =>t, :kind =>1, :survey_id => @survey.id)
-          end
+      text_questions.each do |t|
+        Question.create(:text =>t, :kind =>1, :survey_id => @survey.id)
+      end
       redirect_to @survey, notice: 'survey was successfully created.'
     else
       render :new
@@ -97,10 +95,8 @@ class SurveysController < ApplicationController
      params.require(:survey).permit(:name, :text, :projects_id)
     end
 
-    def user_only
-      puts current_subject
-      puts "**************"
-      unless current_user.user? 
+    def researcher_only
+      unless current_researcher.researcher?
         redirect_to :back, :alert => "You need to be a Researcher to access this page."
       end
     end

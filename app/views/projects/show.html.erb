@@ -6,7 +6,6 @@
   <p><h4><%= @current_project.description %></h4></p>
 
 
-
   <table>
     <thead>
       <tr>
@@ -25,12 +24,12 @@
 
 
   <hr>
-  
+
   <%= link_to 'New Survey', "#{@current_project.id}/survey/new"  %>
   <br>
   <%= link_to 'Edit', edit_project_path(@project) %> |
   <%= link_to 'Back', projects_path %> |
-  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+  <%= link_to('Logout', destroy_researcher_session_path, :method => :delete) %>
   <%# link_to 'New', new_survey_path %>
 
 </div>
