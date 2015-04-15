@@ -16,7 +16,6 @@
     </thead>
 
     <tbody>
-    <br>
       <% @current_questions.each do |question| %>
         <tr>
           <td><%= link_to "#{question.text}" , question %></td>
@@ -25,10 +24,10 @@
     </tbody>
   </table>
 
-  <% if user_signed_in?  %>
+  <% if researcher_signed_in?  %>
   <%= link_to 'Edit', edit_survey_path(@survey) %> |
   <%= link_to 'Back', project_path(@current_project) %> |
-  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+  <%= link_to('Logout', destroy_researcher_session_path, :method => :delete) %>
   <%end%>
 
   <% if subject_signed_in? %>
