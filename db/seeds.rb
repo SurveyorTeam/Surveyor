@@ -13,9 +13,9 @@ Question.destroy_all
 SurveyResponse.destroy_all
 Subject.destroy_all
 
-10.times do Fabricate(:subject) end
 5.times do Fabricate(:user) end
 15.times do Fabricate(:project) end
 45.times do Fabricate(:survey) end
 125.times do Fabricate(:question) end 
 300.times do Fabricate(:SurveyResponse) end
+10.times do Fabricate(:subject) end

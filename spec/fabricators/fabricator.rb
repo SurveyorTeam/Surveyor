@@ -11,12 +11,12 @@ end
 Fabricator(:project) do
 	title{Faker::Address.country}#studies names after countries, why not
 	description{Faker::Company.bs}
-	user_id{rand(15)+User.first.id}
+	user_id{rand(5)+User.first.id}
 end
 
 Fabricator(:survey) do
 	name{Faker::Lorem.word}
-	projects_id{rand(50)+Project.first.id}
+	projects_id{rand(15)+Project.first.id}
   gender{rand(2)}
   age{rand(50)+18}
   education_level{rand(5)}
@@ -34,14 +34,14 @@ Fabricator(:question) do
   boolean_option_2{nil}
   range_min{nil}
   range_max{nil}
-  survey_id{rand(150)+Survey.first.id}
+  survey_id{rand(45)+Survey.first.id}
 end
 
 Fabricator(:SurveyResponse) do
   bool{nil}
   range_num{nil}
   text{Faker::Lorem.sentence}
-  question_id{rand(500)+Question.first.id}
+  question_id{rand(125)+Question.first.id}
 end
 
 Fabricator(:subject) do
