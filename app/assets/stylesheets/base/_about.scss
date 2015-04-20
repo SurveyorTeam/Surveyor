@@ -1,0 +1,5 @@
+.about {
+  @include outer-container;
+  max-width: 40em;
+  margin-bottom: 3em;
+}

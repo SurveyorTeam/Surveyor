@@ -6,21 +6,13 @@
 @import "neat";
 @import "base/base";
 @import "refills/flashes";
-@import "bootstrap-sprockets";
-@import "bootstrap";
-body {
-  @include outer-container;
-}
 
 // login view
-
 .login {
-  // Positioning
   @include span-columns(6);
   @include shift(3);
   margin-top: 20vh;
 
-  // border
   padding: 2em;
   background-color: $light-gray;
   border-radius: 4px;
@@ -29,7 +21,6 @@ body {
     text-align: center;
   }
 }
-
 
 .login_main {
   // Positioning
@@ -44,76 +35,5 @@ body {
 
   h1, h2, h3 {
     text-align: center;
-  }
-}
-
-.yoseph_test {
-  background-color: $light-gray;
-
-  hr {
-    border-color: #D3D3D3;
-    border-width: 1px;
-  }
-}
-
-// Hero
-.hero {
-  $base-border-radius: 3px !default;
-  $action-color: #477DCA !default;
-  $large-screen: em(860) !default;
-  $hero-background-top: #7F99BE;
-  $hero-background-bottom: #20392B;
-  $hero-color: white;
-  $gradient-angle: 10deg;
-
-  background-color: #324766;
-  background-position: top;
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding-bottom: 3em;
-
-  .hero-logo img {
-    height: 4em;
-    margin-bottom: 1em;
-  }
-
-  .hero-inner {
-    @include outer-container;
-    @include clearfix;
-    color: $hero-color;
-    margin: auto;
-    padding: 3.5em;
-    text-align: center;
-
-    .hero-copy {
-      text-align: center;
-
-      h1 {
-        font-size: 1.6em;
-        margin-bottom: 0.5em;
-
-        @include media($large-screen) {
-          font-size: 1.8em;
-        }
-      }
-
-      p {
-        font-weight: 200;
-        line-height: 1.4em;
-        margin: 0 auto 3em auto;
-
-        @include media($large-screen) {
-          font-size: 1.1em;
-          max-width: 40%;
-        }
-      }
-    }
-
-    button {
-      padding: 0.7em 1em;
-      background: transparent;
-      border-color: $white;
-      border-width: 1px;
-    }
   }
 }

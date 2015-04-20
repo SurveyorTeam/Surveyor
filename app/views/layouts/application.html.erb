@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href='http://fonts.googleapis.com/css?family=Raleway:500,100,900' rel='stylesheet' type='text/css'>
   <meta charset="utf-8" />
   <meta name="ROBOTS" content="NOODP" />
   <meta name="viewport" content="initial-scale=1" />
@@ -16,44 +15,31 @@
   <script src="/assets/jquery-1.11.2.min.js" type="text/javascript"></script>
 </head>
 <body class="<%= body_class %>">
-  <header class="navbar">
-    <div class="navbar-class">
-      <div class="nav-container">
-        <%=link_to "Home",projects_path%>
-          <ul class="navbar-nav">
-            <li><button><%=link_to "Subject Sign In",new_subject_session_path%></button></li>
-            <li><button><%=link_to 'Subject Sign up', new_subject_registration_path%></button></li>
-            <li><button><%=link_to "Researcher Sign In", new_researcher_session_path%></button></li>
-            <li><button><%=link_to 'Researcher Sign up', new_researcher_registration_path%></button></li>
-            <li><button><%=link_to('Logout', destroy_researcher_session_path, :method => :delete)%></button></li>
-          </ul>
+  <header class="navigation" role="banner">
+    <div class="navigation-wrapper">
+      <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
+      <nav role="navigation">
+        <ul id="js-navigation-menu" class="navigation-menu show">
+          <li class="nav-link"><a href="/">Surveyor</a></li>
+          <li class="nav-link"><a href="javascript:void(0)">About</a></li>
+          <li class="nav-link"><a href="javascript:void(0)">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="navigation-tools">
+        <div class="search-bar">
+          <form role="search">
+            <input type="search" placeholder="Enter Search" />
+            <button type="submit">
+              <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon.png" alt="Search Icon">
+            </button>
+          </form>
+        </div>
+        <a href="/login" class="sign-up">Sign Up</a>
       </div>
     </div>
   </header>
-  <%= render "flashes" -%>
-  <%= yield %>
-  <br><br><br>
-  <div class="footer">
-    <div class="footer-col">
-    <div id="footer-head">About</div>
-      <p>
-      Ut vis constituto intellegam assueverit, cum no mundi timeam philosophia. Esse sonet te quo, usu quidam assentior at. Mutat appareat consequat an pri, sit possit tincidunt ei. Nam ut deserunt deseruisse cotidieque, velit legendos erroribus sit ea. Ut everti mandamus mei. Iriure scaevola at his, verear gloriatur ex vis.
-      </p>
-    </div>
-    <div class="footer-col">
-    <div id="footer-head">The Product</div>
-      <p>
-      Ut vis constituto intellegam assueverit, cum no mundi timeam philosophia. Esse sonet te quo, usu quidam assentior at. Mutat appareat consequat an pri, sit possit tincidunt ei. Nam ut deserunt deseruisse cotidieque, velit legendos erroribus sit ea. Ut everti mandamus mei. Iriure scaevola at his, verear gloriatur ex vis.
-      </p>
-    </div>
-    <div class="footer-col">
-    <div id="footer-head">Contact Us</div>
-      <p>
-      Ut vis constituto intellegam assueverit, cum no mundi timeam philosophia. Esse sonet te quo, usu quidam assentior at. Mutat appareat consequat an pri, sit possit tincidunt ei. Nam ut deserunt deseruisse cotidieque, velit legendos erroribus sit ea. Ut everti mandamus mei. Iriure scaevola at his, verear gloriatur ex vis.
-      </p>
-    </div>
-
-  </div>
-  <%= render "javascript" %>
+    <%= render "flashes" -%>
+    <%= yield %>
+    <%= render "javascript" %>
 </body>
 </html>
