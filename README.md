@@ -71,18 +71,20 @@ Some setup you must do manually if you haven't yet:
 ## User Model
 
 Inheritance, on the application layer:
-```
-User
-| — Subject
-| — Researcher
-```
+
+    ```
+    User
+    | — Subject
+    | — Researcher
+    ```
 
 Table Schema, simplified
-```
-User
-| — Email
-| — Password
-| — Enum [Subject, Researcher]
-```
 
-When the application pulls from the database, it sees whether a user is a `subject` or `user`. Depending on the answer, rails would use the proper model, and thereby the associated permissions. Note: as of writing, the latter feature is not fully implemented. 
+    ```
+    User
+    | — Email
+    | — Password
+    | — Enum [Subject, Researcher]
+    ```
+
+When the application pulls from the database, it sees whether a user is a `subject` or `user`. Depending on the answer, rails would use the proper model, and thereby the associated permissions. Note: as of writing, the latter feature is not fully implemented.
