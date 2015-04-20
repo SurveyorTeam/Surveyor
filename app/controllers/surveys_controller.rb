@@ -35,7 +35,7 @@ class SurveysController < ApplicationController
 
   def submit_responses
     text_responses = params['text']
-    Survey_response.add_responses(text_responses,'text')
+    SurveyResponse.add_responses(text_responses,'text')
     #text_responses = params['bool'] you get the idea, one for each new implemented type of question
     #QUestion.add_responses(bool_responses, 'bool')
   end

@@ -6,7 +6,8 @@
 @import "neat";
 @import "base/base";
 @import "refills/flashes";
-
+@import "bootstrap-sprockets";
+@import "bootstrap";
 body {
   @include outer-container;
 }

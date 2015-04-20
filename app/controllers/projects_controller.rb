@@ -17,6 +17,7 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
+    @user_id = current_researcher.id
   end
 
   # GET /projects/1/edit
@@ -25,7 +26,8 @@ class ProjectsController < ApplicationController
   # POST /projects
   def create
     @project = Project.new(project_params)
-
+    puts "LKTJLAFLAFKLJASDEFASFKJHGFK"
+    puts project_params
     if @project.save
       redirect_to @project, notice: 'Project was successfully created.'
     else
