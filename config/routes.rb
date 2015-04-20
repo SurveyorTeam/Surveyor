@@ -15,7 +15,15 @@ Rails.application.routes.draw do
   get 'surveys/:id/survey_respond' => 'surveys#survey_respond'
   get 'projects/:id/survey/new' => 'surveys#new'
 
-  # devise_for :users, skip: [:registrations]
+  devise_for :users, skip: [:registrations]
   devise_for :researchers
   devise_for :subjects
+
+  namespace :researcher do
+    root to: "projects#index"
+  end
+
+  namespace :subjects do
+    root to: "surveys#index"
+  end
 end
