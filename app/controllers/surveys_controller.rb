@@ -25,7 +25,7 @@ class SurveysController < ApplicationController
 
   # GET /surveys/1/edit
   def edit
-
+    @project_id = params[:id]
   end
 
   def survey_respond
@@ -112,7 +112,7 @@ class SurveysController < ApplicationController
     end
 
     def researcher_only
-      unless current_researcher.researcher?
+      unless current_subject
         redirect_to :back, :alert => "You need to be a Researcher to access this page."
       end
     end
