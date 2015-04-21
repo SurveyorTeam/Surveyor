@@ -26,4 +26,9 @@
 
 <br>
 
-<%= link_to 'New Survey', new_survey_path %>
+  <% if researcher_signed_in?  %>
+  <%= link_to 'New Survey', new_survey_path %>
+  <%end%>
+
+  <% if subject_signed_in? %>
+  <%end%>
