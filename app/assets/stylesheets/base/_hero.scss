@@ -53,10 +53,15 @@
     }
 
     button {
+      @include button;
+      // weird overrides
+      box-shadow: none;
+      text-shadow: none;
+
       padding: 0.7em 1em;
       background: transparent;
       border-color: white;
-      border-width: 1px;
+      border-width: 2px;
     }
   }
 }
