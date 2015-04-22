@@ -14,16 +14,17 @@ Rails.application.routes.draw do
   get '/create_survey' => 'surveys#create_survey'
   get 'surveys/:id/survey_respond' => 'surveys#survey_respond'
   get 'projects/:id/survey/new' => 'surveys#new'
+  get 'subjects_home' => 'surveys#subjects_home'
 
   devise_for :users, skip: [:registrations]
   devise_for :researchers
   devise_for :subjects
 
-  namespace :researcher do
-    root to: "projects#index"
-  end
+  # namespace :researcher do
+  #   root to: "projects#index"
+  # end
 
-  namespace :subjects do
-    root to: "surveys#index"
-  end
+  # namespace :subject do
+  #   root to: "surveys#subjects_home"
+  # end
 end

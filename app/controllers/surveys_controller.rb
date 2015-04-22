@@ -1,7 +1,8 @@
 class SurveysController < ApplicationController
   before_action :set_survey, only: [:show, :edit, :update, :destroy]
   #before_action :authenticate_user!
-  before_action :researcher_only, :except => [:show, :survey_respond, :submit_responses]
+  before_action :is_researcher, :except => [:subjects_home]
+  before_filter :is_subject, :only => [:subjects_home]
 
   # GET /surveys
   def index
@@ -25,7 +26,7 @@ class SurveysController < ApplicationController
 
   # GET /surveys/1/edit
   def edit
-
+    @project_id = params[:id]
   end
 
   def survey_respond
@@ -51,7 +52,9 @@ class SurveysController < ApplicationController
      render :new
     end
   end
-
+  def subjects_home
+    @surveys = Survey.all
+  end
   def create_survey
     puts "******************", params.inspect, "*****************"
   @survey = Survey.new(survey_params)
@@ -109,12 +112,6 @@ class SurveysController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def survey_params
      params.require(:survey).permit(:name, :text, :projects_id)
-    end
-
-    def researcher_only
-      unless current_researcher.researcher?
-        redirect_to :back, :alert => "You need to be a Researcher to access this page."
-      end
     end
 
     def get_signed_in
