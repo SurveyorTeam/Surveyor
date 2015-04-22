@@ -28,7 +28,7 @@ module Surveyor
       generate.view_specs false
     end
 
-    config.assets.initialize_on_precompile = false
+    config.assets.initialize_on_precompile = true 
 
     config.action_controller.action_on_unpermitted_parameters = :raise
     # Settings in config/environments/* take precedence over those specified here.
