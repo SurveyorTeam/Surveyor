@@ -55,7 +55,7 @@ RSpec.describe SubjectsController, :type => :controller do
   describe "GET new" do
     it "assigns a new subject as @subject" do
       get :new, {}, valid_session
-      expect(assigns(:subject)).to be_a_new(Subject)
+      expect(assigns(:subject)).to be_a_new(User)
     end
   end
 
