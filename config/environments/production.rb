@@ -1,4 +1,4 @@
-require Rails.root.join("config/smtp")
+# require Rails.root.join("config/smtp")
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -85,5 +85,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.default_url_options = { host: ENV.fetch("HOST") }
-  
+
 end
