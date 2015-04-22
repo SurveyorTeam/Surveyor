@@ -14,6 +14,18 @@ class ApplicationController < ActionController::Base
       head(404)
     end
   end
+  def is_subject
+    unless current_subject
+      flash[:error] = "Subject only page"
+      redirect_to home_path
+    end
+  end
+  def is_researcher
+    unless current_researcher
+      flash[:error] = "Researcher only page"
+      redirect_to home_path
+    end
+  end
 
   #These have been moved to their respective controllers:sessions
   # def after_sign_in_path_for(subjects)

@@ -23,8 +23,11 @@ class Users::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.for(:sign_in) << :attribute
   # end
 
-  def after_sign_in_path_for(users)
+  def after_sign_in_path_for(researcher)
     '/projects'
   end 
+  # def after_sign_in_path_for(subject)
+  #   '/surveys'
+  # end
 
 end

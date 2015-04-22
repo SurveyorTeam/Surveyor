@@ -23,6 +23,13 @@
           <li class="nav-link"><a href="/">Surveyor</a></li>
           <li class="nav-link"><a href="javascript:void(0)">About</a></li>
           <li class="nav-link"><a href="javascript:void(0)">Contact</a></li>
+          <li class="nav-link"><%= link_to('Logout', destroy_researcher_session_path, :method => :delete) %></li>
+          <%if current_researcher %> 
+          <li class="nav-link"><%= link_to('Researcher Home', projects_path)%></li>
+          <%end%>
+          <%if current_subject %> 
+          <li class="nav-link"><%= link_to('Subject Home', subjects_home_path)%></li>
+          <%end%>
         </ul>
       </nav>
       <div class="navigation-tools">
