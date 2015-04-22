@@ -29,6 +29,7 @@ gem 'rb-readline'
 gem 'faker'
 gem 'fabrication'
 gem 'autoprefixer-rails'
+gem 'sendgrid-rails', '~> 2.0'
 
 group :development do
   gem "spring", '>=1.3.3'
