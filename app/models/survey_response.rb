@@ -2,7 +2,7 @@
 # end
 #holy crap this is so bad but it seems to need both to work and i have no idea why
 class SurveyResponse < ActiveRecord::Base
-    def self.add_responses(responses,response_type)
+    def self.add_responses_text(responses,response_type)
     puts responses.class
     puts '*************************'
     responses.each do |response|

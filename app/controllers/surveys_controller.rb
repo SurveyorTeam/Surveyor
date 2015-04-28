@@ -1,7 +1,7 @@
 class SurveysController < ApplicationController
   before_action :set_survey, only: [:show, :edit, :update, :destroy]
   #before_action :authenticate_user!
-  before_action :is_researcher, :except => [:subjects_home]
+  before_action :is_researcher, :except => [:subjects_home, :subjects_survey, :submit_responses]
   before_filter :is_subject, :only => [:subjects_home]
 
   # GET /surveys
@@ -20,7 +20,6 @@ class SurveysController < ApplicationController
   def new
     @survey = Survey.new
     @project_id = params[:id]
-    puts "HEREHREHRHEHRHEHR #{@project_id}"
     @current_projects = Project.where(:user_id => current_researcher.id)
   end
 
@@ -35,10 +34,29 @@ class SurveysController < ApplicationController
   end
 
   def submit_responses
+    puts params
     text_responses = params['text']
-    SurveyResponse.add_responses(text_responses,'text')
+    puts text_responses
+    SurveyResponse.add_responses_text(text_responses,'text')
+    bool_ticker = 0
+    while params["bool#{bool_ticker}"] != nil do
+      puts "HIHIHIHIfdfdsfdsfsdfsdHIHIH"
+      bool_ans =  params["bool#{bool_ticker}"]
+      bool_ans = bool_ans[0]
+      puts bool_ans.class
+      puts bool_ans[0]
+      puts bool_ans[1..-1]
+      bool_ticker=bool_ticker+1
+      SurveyResponse.create(bool: bool_ans[0] , question_id: bool_ans[1..-1])
+    end
     #text_responses = params['bool'] you get the idea, one for each new implemented type of question
     #QUestion.add_responses(bool_responses, 'bool')
+  end
+
+  def subjects_survey
+    @survey_id = params[:id]
+    @current_survey = Survey.find(params[:id])
+    @current_questions = Question.where(:survey_id => @current_survey.id)
   end
 
   # POST /surveys

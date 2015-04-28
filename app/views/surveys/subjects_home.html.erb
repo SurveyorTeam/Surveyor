@@ -13,7 +13,7 @@
   <tbody>
     <% @surveys.each do |survey| %>
       <tr>
-        <td><%= link_to "#{survey.name}", survey %></td>
+        <td><%= link_to "#{survey.name}", "surveys/#{survey.id}/subjects_survey" %></td>
       </tr>
     <% end %>
   </tbody>

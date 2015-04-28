@@ -6,7 +6,7 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
+<%= %>
   <tbody>
   <% bool_1 = 0 %>
   <% bool_2 = 0 %>
@@ -15,13 +15,22 @@
         <% if @current_question.kind == 0 %>
           <td><%=  "#{response.text}"  %></td>
         <% end %>
-<!--           <% if @current_question.kind == 1 %>
-          <% end %> when can submit survey responses to bools -->
+        <% if @current_question.kind == 1 %>
+          <% if response.bool == 'A' %>
+            <% bool_1=bool_1+1 %>
+          <%else%>
+            <%bool_2=bool_2+1 %>
+          <%end%>
+        <%end%>
 		<td><%= link_to 'Destroy', response, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<% if @current_question.kind == 1 %>
+<h2><%= @current_question.boolean_option_1+" "+bool_1.to_s %></h2>
+<h2><%= @current_question.boolean_option_2+" "+bool_2.to_s %></h2>
+<%end%>
 <%= link_to 'Edit', edit_question_path(@question) %> |
 <%= link_to 'Back', survey_path(@current_survey) %> 
 

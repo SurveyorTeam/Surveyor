@@ -6,7 +6,7 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
+<% radio_counter = 0 %>
   <tbody>
     <% @current_questions.each do |question| %>
       <tr>
@@ -16,9 +16,11 @@
 			<%end%>
 			<%if question.kind == 1 %>  
 			    <%= label_tag(:q, "#{question.text}") %>
-			    <%= label_tag("A") %> <%= radio_button_tag(:bool, "A"+ question.id.to_s) %>
-	  			<%= label_tag("B") %> <%= radio_button_tag(:bool, "B"+ question.id.to_s) %>
-	  			
+	        	<%= label_tag("#{question.boolean_option_1}") %>	
+	        	<%= radio_button_tag("bool#{radio_counter}[]", "A"+ question.id.to_s) %>
+	  			<%= label_tag("#{question.boolean_option_2}") %>
+	  			<%= radio_button_tag("bool#{radio_counter}[]", "B"+ question.id.to_s) %>
+	  			<% radio_counter = radio_counter+1 %>
 			<%end%><!--need one for multi choice also -->
       </tr>
     <% end %>
