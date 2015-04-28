@@ -1,9 +1,23 @@
 .select-login {
   @include outer-container;
+  @include span-columns(6);
+  @include shift(3);
+  background-color: $light-gray;
+  border-radius: 4px;
+  margin-bottom: 15vh;
+  margin-top: 15vh;
+  padding: 2em;
+
+  // font formatting
+  text-align: center;
+
+  .options {
+    margin: 4vh;
+  }
 
   button {
     a {
-      color: white;
+      color: #fff;
     }
   }
 }

@@ -1,8 +1,14 @@
 <div class = "select-login">
   <h1>Just a second...</h1>
-  <p>What type of person are you?</p>
-  
-   <a href="/researcher_login" class="sign-up">Researcher</a>
-	<br>
-   <a href="/subject_login" class="sign-up">Subject</a>
+  <h3>What type of person are you?</h3>
+
+  <section class = "options">
+    <button>
+      <%= link_to 'I’m a researcher.', '/researcher_login' %>
+    </button>
+
+    <button>
+      <%= link_to 'I’m a subject.', '/subject_login' %>
+    </button>
+  </section>
 </div>
