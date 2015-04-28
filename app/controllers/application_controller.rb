@@ -4,28 +4,31 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
 
-  def signed_in
-    signed_in = (user_signed_in? || subject_signed_in?) ? true : false
-    # retval = false
-    # if (user_signed_in? || subject_signed_in)
-    #   retval = true
-    # end
-    unless signed_in
-      head(404)
-    end
-  end
-
   def subject?
-    unless current_subject
+    if !current_subject
       flash[:error] = 'Sorry! this page is only for subjects.'
       redirect_to home_path
+      false
+    else
+      true
     end
   end
 
   def researcher?
-    unless current_researcher
-      flash[:error] = 'Sorry! this page is only for subjects.'
+    if !current_researcher
+      flash[:error] = 'Sorry! this page is only for researchers.'
       redirect_to home_path
+      false
+    else
+      true
     end
+  end
+end
+
+def signed_in?
+  if current_subject || current_subject
+    true
+  else
+    false
   end
 end
