@@ -4,13 +4,13 @@ class ProjectsController < ApplicationController
 
   # GET /projects
   def index
-    @projects = Project.where(:user_id => current_researcher.id)
+    @projects = Project.where(user_id: current_researcher.id)
   end
 
   # GET /projects/1
   def show
     @current_project = Project.find(params[:id])
-    @current_surveys = Survey.where(:projects_id => @current_project.id)
+    @current_surveys = Survey.where(projects_id: @current_project.id)
   end
 
   # GET /projects/new
@@ -22,16 +22,15 @@ class ProjectsController < ApplicationController
   # GET /projects/1/edit
   def edit
   end
+
   # POST /projects
   def create
     @project = Project.new(project_params)
-    puts "LKTJLAFLAFKLJASDEFASFKJHGFK"
-    puts project_params
+
     if @project.save
       redirect_to @project, notice: 'Project was successfully created.'
     else
       render :new
-      puts "fail"
     end
   end
 
@@ -51,20 +50,22 @@ class ProjectsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_project
-      @project = Project.find(params[:id])
-    end
 
-    def researcher_only
-      unless current_researcher.researcher?
-        redirect_to :back, :alert => "You need to be a Researcher to access this page."
-      end
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_project
+    @project = Project.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def project_params
-      #params[:project]
-      params.require(:project).permit(:title, :description, :user_id)
+  def researcher_only
+    unless current_researcher.researcher?
+      redirect_to :back,
+                  alert: 'You need to be a Researcher to access this page.'
     end
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def project_params
+    # params[:project]
+    params.require(:project).permit(:title, :description, :user_id)
+  end
 end

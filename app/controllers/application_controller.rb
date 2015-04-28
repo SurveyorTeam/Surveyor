@@ -28,15 +28,4 @@ class ApplicationController < ActionController::Base
       redirect_to home_path
     end
   end
-
-  # These have been moved to their respective controllers:sessions
-  # def after_sign_in_path_for(subjects)
-  #   '/subjects'
-  # end
-
-  # def after_sign_in_path_for(users)
-  #   '/projects'
-  # end
-
-
 end
