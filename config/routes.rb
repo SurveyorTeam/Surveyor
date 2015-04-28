@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get '/create_survey' => 'surveys#create_survey'
   get 'surveys/:id/survey_respond' => 'surveys#survey_respond'
   get 'projects/:id/survey/new' => 'surveys#new'
-    get 'surveys/:id/subjects_survey' => 'surveys#subjects_survey'
+  get 'surveys/:id/subjects_survey' => 'surveys#subjects_survey'
   get 'subjects_home' => 'surveys#subjects_home'
 
   devise_for :users, skip: [:registrations]

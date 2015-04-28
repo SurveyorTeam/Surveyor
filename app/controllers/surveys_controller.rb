@@ -1,14 +1,15 @@
+# Access surveys
 class SurveysController < ApplicationController
   before_action :set_survey, only: [:show,
                                     :edit,
                                     :update,
                                     :destroy]
 
-  before_action :is_researcher, except: [:subjects_home,
-                                         :subjects_survey,
-                                         :submit_responses]
+  before_action :researcher?, except: [:subjects_home,
+                                       :subjects_survey,
+                                       :submit_responses]
 
-  before_filter :is_subject, only: [:subjects_home]
+  before_filter :subject?, only: [:subjects_home]
 
   # GET /surveys
   def index
@@ -136,8 +137,4 @@ class SurveysController < ApplicationController
   def survey_params
     params.require(:survey).permit(:name, :text, :projects_id)
   end
-
-  # def get_signed_in
-  #   @signed_in = signed_in
-  # end
 end

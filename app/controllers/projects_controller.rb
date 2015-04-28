@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
-  before_action :is_researcher
+  before_action :researcher?
 
   # GET /projects
   def index
