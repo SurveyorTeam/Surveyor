@@ -23,12 +23,12 @@ class ApplicationController < ActionController::Base
       true
     end
   end
-end
 
-def signed_in?
-  if current_subject || current_subject
-    true
-  else
-    false
+  def signed_in?
+    if current_subject || current_subject
+      true
+    else
+      false
+    end
   end
 end
