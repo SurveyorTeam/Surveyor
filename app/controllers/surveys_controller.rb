@@ -36,6 +36,7 @@ class SurveysController < ApplicationController
 
   # GET /surveys/1/edit
   def edit
+    @current_survey = Survey.find(params[:id])
     @project_id = params[:id]
   end
 

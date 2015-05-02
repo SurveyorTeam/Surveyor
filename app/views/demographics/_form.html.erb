@@ -3,12 +3,13 @@
 
   <div class="form-inputs">
     <%= f.input :name %>
-	<%= f.label "Female, Male, Other"%>
-    <%= f.input :gender %> 
+	<%= f.label "Gender"%>
+    <%= select_tag :gender, options_for_select(gender) %>
     <%= f.input :age %>
-	<%= f.label "No High School, High School, Associate, Bachelors, Masters, Advanced"%>
-    <%= f.input :education %>
-    <%= f.input :nationality %>
+	<%= f.label "Education Level"%>
+    <%= select_tag :education_level, options_for_select(education) %>
+    <%= f.label "Nationality"%>
+	<%= select_tag :nationality, options_for_select(nations)%>
 	<%= f.input :user_id, :as => :hidden, :input_html => { :value => current_subject.id } %>
   </div>
 
