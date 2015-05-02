@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
   end
 
   def signed_in?
-    if current_subject || current_subject
+    if current_subject || current_researcher
       true
     else
       false

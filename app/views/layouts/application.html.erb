@@ -24,17 +24,15 @@
           <li class="nav-link"><a href="javascript:void(0)">About</a></li>
           <li class="nav-link"><a href="javascript:void(0)">Contact</a></li>
 
-          <% if signed_in? %>
+          <% if current_researcher %>
+            <li class="nav-link"><%= link_to('Projects Dashboard', projects_path)%></li>
             <li class="nav-link"><%= link_to('Logout', destroy_researcher_session_path, :method => :delete) %></li>
           <% end %>
 
-          <% if current_researcher %>
-            <li class="nav-link"><%= link_to('Projects Dashboard', projects_path)%></li>
-          <%end%>
-
           <% if current_subject %>
             <li class="nav-link"><%= link_to('Dashboard', subjects_home_path)%></li>
-          <%end%>
+            <li class="nav-link"><%= link_to('Logout', destroy_subject_session_path, :method => :delete) %></li>
+          <% end %>
         </ul>
       </nav>
       <div class="navigation-tools">
