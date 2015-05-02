@@ -12,4 +12,8 @@
   h3 {
     text-align: center;
   }
+
+  .error {
+    color: darken($error-color, 60);
+  }
 }
