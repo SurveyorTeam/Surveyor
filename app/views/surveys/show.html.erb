@@ -3,10 +3,15 @@
   <p id="notice"><%= notice %></p>
 
   <p>
-    <strong>Name:</strong>
+    <strong>Survey Name:</strong>
     <%= @survey.name %>
   </p>
-
+  <p>
+	  <strong>Demographic Information:</strong>
+	  <br>Gender: <%= @demo_gender%></br>
+	  <br>Age range: <%= @demo_min_age%> - <%= @demo_max_age%></br>
+	  <br>Nationality: <%= @demo_nationality%></br>
+  </p>
 
   <table>
     <thead>
@@ -23,6 +28,8 @@
       <% end %>
     </tbody>
   </table>
+  
+  
 
   <% if researcher_signed_in?  %>
   <%= link_to 'Edit', edit_survey_path(@survey) %> |

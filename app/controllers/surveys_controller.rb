@@ -21,6 +21,10 @@ class SurveysController < ApplicationController
     @current_survey = Survey.find(params[:id])
     @current_project = Project.find(@current_survey.projects_id)
     @current_questions = Question.where(survey_id: @current_survey.id)
+    @demo_gender = @current_survey.gender
+    @demo_min_age = @current_survey.min_age
+    @demo_max_age = @current_survey.max_age
+    @demo_nationality = @current_survey.nationality
   end
 
   # GET /surveys/new
@@ -28,8 +32,6 @@ class SurveysController < ApplicationController
     @survey = Survey.new
     @project_id = params[:id]
     @current_projects = Project.where(user_id: current_researcher.id)
- 
-    
   end
 
   # GET /surveys/1/edit
