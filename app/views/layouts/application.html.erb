@@ -26,16 +26,14 @@
 
           <% if signed_in? %>
             <li class="nav-link"><%= link_to('Logout', destroy_researcher_session_path, :method => :delete) %></li>
-          <% else %>
+          <% end %>
 
-          <%if current_researcher %>
+          <% if current_researcher %>
             <li class="nav-link"><%= link_to('Researcher Home', projects_path)%></li>
           <%end%>
 
-          <%if current_subject %>
+          <% if current_subject %>
             <li class="nav-link"><%= link_to('Subject Home', subjects_home_path)%></li>
-          <%end%>
-
           <%end%>
         </ul>
       </nav>
