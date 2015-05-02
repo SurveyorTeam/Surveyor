@@ -1,10 +1,16 @@
+require "csv"
+
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :researcher?
-
   # GET /projects
   def index
-    @projects = Project.where(user_id: current_researcher.id)
+    @projects = Project.where(:user_id => current_researcher.id)
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @projects.to_csv }
+    end
   end
 
   # GET /projects/1
