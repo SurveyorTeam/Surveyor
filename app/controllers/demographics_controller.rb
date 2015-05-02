@@ -54,6 +54,6 @@ class DemographicsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def demographic_params
-      params.require(:demographic).permit(:name, :gender, :age, :education, :nationality)
+      params.require(:demographic).permit(:name, :gender, :age, :education, :nationality, :user_id)
     end
 end

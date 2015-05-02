@@ -40,11 +40,9 @@ ActiveRecord::Schema.define(version: 20150414012551) do
     t.string   "nationality"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "subject_id"
     t.integer  "user_id"
   end
 
-  add_index "demographics", ["subject_id"], name: "index_demographics_on_subject_id", using: :btree
   add_index "demographics", ["user_id"], name: "index_demographics_on_user_id", using: :btree
 
   create_table "projects", force: :cascade do |t|
@@ -111,12 +109,10 @@ ActiveRecord::Schema.define(version: 20150414012551) do
   create_table "surveys", force: :cascade do |t|
     t.string   "name"
     t.integer  "gender"
-    t.integer  "age"
+    t.integer  "min_age"
+    t.integer  "max_age"
     t.integer  "education_level"
-    t.integer  "income"
-    t.string   "race"
     t.string   "nationality"
-    t.string   "state"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "projects_id"
@@ -142,6 +138,5 @@ ActiveRecord::Schema.define(version: 20150414012551) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "demographics", "subjects"
   add_foreign_key "demographics", "users"
 end

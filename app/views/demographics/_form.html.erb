@@ -3,10 +3,13 @@
 
   <div class="form-inputs">
     <%= f.input :name %>
-    <%= f.input :gender %>
+	<%= f.label "Female, Male, Other"%>
+    <%= f.input :gender %> 
     <%= f.input :age %>
+	<%= f.label "No High School, High School, Associate, Bachelors, Masters, Advanced"%>
     <%= f.input :education %>
     <%= f.input :nationality %>
+		<%= f.input :user_id, :as => :hidden, :input_html => { :value => current_subject.id } %>
   </div>
 
   <div class="form-actions">
