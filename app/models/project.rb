@@ -8,8 +8,6 @@ class Project < ActiveRecord::Base
       csv << ["Project title", "Survey Title", "Question", "Response"]
 
       all.each do |project|
-        #surs = [Survey.where(:projects_id => project.id)]
-
         surveys = Survey.where(:projects_id=> project.id)
         surveys.each do |survey|
           questions = Question.where(:survey_id => survey.id)
