@@ -12,27 +12,30 @@ Questions:
 	 <div><input style="display:none;" type="text" name="bool_text[]"></div>
 	 <div><input style="display:none;" type="text" name="bool_choice1[]"></div>
 	 <div><input style="display:none;" type="text" name="bool_choice2[]"></div>
-	   <div><input style="display:none;" type="text" name="range_text[]"></div>
-	    <div><input style="display:none;" type="text" name="radio_choice1[]"></div>
-		 <div><input style="display:none;" type="text" name="radio_choice2[]"></div>
-		  <div><input style="display:none;" type="text" name="radio_choice3[]"></div>
-		   <div><input style="display:none;" type="text" name="radio_choice4[]"></div>
-		    <div><input style="display:none;" type="text" name="radio_choice5[]"></div>
+	 <div><input style="display:none;" type="text" name="range_text[]"></div>
+	 <div><input style="display:none;" type="text" name="radio_choice1[]"></div>
+	 <div><input style="display:none;" type="text" name="radio_choice2[]"></div>
+	 <div><input style="display:none;" type="text" name="radio_choice3[]"></div>
+	 <div><input style="display:none;" type="text" name="radio_choice4[]"></div>
+	 <div><input style="display:none;" type="text" name="radio_choice5[]"></div>
 </div>
   <%= f.input :projects_id,:as => :hidden,  :input_html => { :value => "#{@project_id}" } %>
   <button class="add_field_button">New Question</button>
   <button class="add_field_button_bool">New True/False Question</button>
  <!-- <button class="add_range_button">New Range Question</button>-->
- <%= f.input :gender %>
+ <div>
+	 Gender: <%= select_tag :gender, options_for_select(gender) %>
  <%= f.input :min_age %>
  <%= f.input :max_age%>
- <% f.input :education_level %>
-<%= select_tag :nationality, options_for_select(@us_states) %>
+ Education Level: <%= select_tag :education_level, options_for_select(education) %>
+ Nationality: <%= select_tag :nationality, options_for_select(nations)%>
  <%=%>
+</div>
   <div class="form-actions">
     <%= f.submit :submit %>
   </div>
 <% end %>
+
 <script type='text/javascript'>
 var counter=0
 	$(".add_field_button").on("click",function(e){
