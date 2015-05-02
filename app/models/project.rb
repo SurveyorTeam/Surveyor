@@ -5,14 +5,14 @@ class Project < ActiveRecord::Base
 
   def self.to_csv(options = {})
     CSV.generate(Hash.new) do |csv|
-      csv << ["Project title", "Survey Title", "Question", "Response"]
+      csv << ['Project title', 'Survey Title', 'Question', 'Response']
 
       all.each do |project|
-        surveys = Survey.where(:projects_id=> project.id)
+        surveys = Survey.where(projects_id: project.id)
         surveys.each do |survey|
-          questions = Question.where(:survey_id => survey.id)
+          questions = Question.where(survey_id: survey.id)
           questions.each do |question|
-            responses = SurveyResponse.where(:question_id => question.id)
+            responses = SurveyResponse.where(question_id: question.id)
             responses.each do |response|
               d = [project.title, survey.name, question.text, response.text]
               csv << d
