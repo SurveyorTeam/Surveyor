@@ -1,10 +1,16 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :is_researcher
-
+  require "csv"
   # GET /projects
   def index
     @projects = Project.where(:user_id => current_researcher.id)
+    
+    respond_to do |format|
+      format.html
+      format.csv {send_data @projects.to_csv}
+    end
+
   end
 
   # GET /projects/1
@@ -22,6 +28,8 @@ class ProjectsController < ApplicationController
   # GET /projects/1/edit
   def edit
   end
+
+
   # POST /projects
   def create
     @project = Project.new(project_params)

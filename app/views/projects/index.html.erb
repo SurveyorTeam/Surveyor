@@ -15,11 +15,19 @@
         <td><div class="data-listing"><%= link_to "#{project.title}", project %></td></div>
         <td><%= link_to 'Edit', edit_project_path(project) %></td>
         <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
+        <!--
+        <td><%= link_to 'Download', projects_path(format: "csv") %></td>
+        -->
       </tr>
     <% end %>
   </tbody>
 </table>
+<div class="body-text">
+  <p>
+  Download your responses!
+  </p>
+</div>
+<button class="create-stuff"><%= link_to 'Download', projects_path(format: "csv") %></button>
 <div class="body-text">
   <p>
   Got a new idea for a project? Just press the button below!  
