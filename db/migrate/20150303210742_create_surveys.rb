@@ -4,12 +4,10 @@ class CreateSurveys < ActiveRecord::Migration
       t.string :name
       #demographic info
       t.integer :gender
-      t.integer :age
+      t.integer :min_age
+      t.integer :max_age
       t.integer :education_level
-      t.integer :income
-      t.string :race
       t.string :nationality
-      t.string :state
 
       t.timestamps null: false
       t.belongs_to :projects

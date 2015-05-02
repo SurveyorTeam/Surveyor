@@ -23,6 +23,12 @@ Questions:
   <button class="add_field_button">New Question</button>
   <button class="add_field_button_bool">New True/False Question</button>
  <!-- <button class="add_range_button">New Range Question</button>-->
+ <%= f.input :gender %>
+ <%= f.input :min_age %>
+ <%= f.input :max_age%>
+ <% f.input :education_level %>
+<%= select_tag :nationality, options_for_select(@us_states) %>
+ <%=%>
   <div class="form-actions">
     <%= f.submit :submit %>
   </div>
