@@ -34,9 +34,9 @@ ActiveRecord::Schema.define(version: 20150414012551) do
 
   create_table "demographics", force: :cascade do |t|
     t.string   "name"
-    t.integer  "gender"
+    t.string   "gender"
     t.integer  "age"
-    t.integer  "education"
+    t.string   "education"
     t.string   "nationality"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
@@ -108,10 +108,10 @@ ActiveRecord::Schema.define(version: 20150414012551) do
 
   create_table "surveys", force: :cascade do |t|
     t.string   "name"
-    t.integer  "gender"
+    t.string   "gender"
     t.integer  "min_age"
     t.integer  "max_age"
-    t.integer  "education_level"
+    t.string   "education_level"
     t.string   "nationality"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false

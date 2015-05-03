@@ -24,6 +24,7 @@ class SurveysController < ApplicationController
     @demo_gender = @current_survey.gender
     @demo_min_age = @current_survey.min_age
     @demo_max_age = @current_survey.max_age
+    @demo_education = @current_survey.education_level
     @demo_nationality = @current_survey.nationality
   end
 
@@ -107,6 +108,14 @@ class SurveysController < ApplicationController
                           boolean_option_2: bool_choice2[i],
                           survey_id: @survey.id)
         end
+        
+        # STUFF TIFFANY ADDED TO TRY TO GET THE DEMOGRAPHICS STUFF TO WORK
+        demo_gender = params['gender']
+        demo_education_level = params['education_level']
+        demo_nationality = params['nationality']
+        Demographic.create(gender: demo_gender,
+                           education: demo_education_level,
+                           nationality: demo_nationality)
       end
 
       redirect_to @survey, notice: 'Survey was successfully created.'
@@ -140,7 +149,7 @@ class SurveysController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def survey_params
-    params.require(:survey).permit(:name, :text, :projects_id, :gender, :min_age, :max_age, :nationality)
+    params.require(:survey).permit(:name, :text, :projects_id, :gender, :min_age, :max_age, :education_level, :nationality)
   end
 
   
