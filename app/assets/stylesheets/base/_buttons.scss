@@ -7,4 +7,12 @@ input[type="submit"] {
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
+
+  a {
+    color: #fff;
+  }
+
+  a:hover {
+    color: #fff;
+  }
 }

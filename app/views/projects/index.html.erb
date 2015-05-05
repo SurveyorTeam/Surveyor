@@ -1,52 +1,53 @@
-<p id="notice"><%= notice %></p>
-<% if @projects.length > 0 %>
-  <h1>Listing Projects</h1>
+<div class = "list-view">
+  <p id="notice"><%= notice %></p>
+  <% if @projects.length > 0 %>
+    <h1>Listing Projects</h1>
 
-  <table>
-    <thead>
-      <tr>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @projects.each do |project| %>
+    <table>
+      <thead>
         <tr>
-          <td><div class="data-listing"><%= link_to "#{project.title}", project %></td></div>
-          <td><%= link_to 'Edit', edit_project_path(project) %></td>
-          <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <!--
-          <td><%= link_to 'Download', projects_path(format: "csv") %></td>
-          -->
+          <th colspan="3"></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <div class="body-text">
+      </thead>
+
+      <tbody>
+        <% @projects.each do |project| %>
+          <tr>
+            <td><div class="data-listing"><%= link_to "#{project.title}", project %></td></div>
+            <td><%= link_to 'Edit', edit_project_path(project) %></td>
+            <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <!--
+            <td><%= link_to 'Download', projects_path(format: "csv") %></td>
+            -->
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="body-text">
+      <p>
+      Download your responses!
+      </p>
+    </div>
+
+    <button><%= link_to 'Download', projects_path(format: "csv") %></button>
+
+    <div class="body-text">
+      <p>
+      Got a new idea for a project? Just press the button below!
+      </p>
+    </div>
+
+    <button><%=link_to 'New Project', new_project_path%></button>
+
+  <% else %>
+    <h1>
+      We see that you havn't created any projects!
+    </h1>
     <p>
-    Download your responses!
+      A project can have multiple surveys. Think of them like folders to hold your related surveys.
     </p>
-  </div>
-
-  <button><%= link_to 'Download', projects_path(format: "csv") %></button>
-
-  <div class="body-text">
-    <p>
-    Got a new idea for a project? Just press the button below!
-    </p>
-  </div>
-
-  <button><%=link_to 'New Project', new_project_path%></button>
-
-<% else %>
-  <div class="section-header-2">
-    We see that you havn't created any projects!
-  </div>
-  <div class="body-text">
-    <p>
-     A project can have multiple surveys. Think of them like folders to hold your related surveys. Click the link
-     <%= link_to 'New Project', new_project_path %> to get started and create your first project.
-     <button class="create-stuff"><%=link_to 'New Project', new_project_path%></button>
-   </p>
-  </div>
-<% end %>
+    <section class = 'options'>
+      <button><%=link_to 'Create a New Project', new_project_path%></button>
+    </section>
+  <% end %>
+</div>
