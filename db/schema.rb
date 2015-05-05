@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20150414012551) do
     t.integer  "age"
     t.string   "education"
     t.string   "nationality"
+    t.integer  "set_once"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "user_id"

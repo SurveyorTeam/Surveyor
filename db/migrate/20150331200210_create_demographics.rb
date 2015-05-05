@@ -6,6 +6,7 @@ class CreateDemographics < ActiveRecord::Migration
       t.integer :age
       t.string :education
       t.string :nationality
+      t.integer :set_once
 
       t.timestamps null: false
     end

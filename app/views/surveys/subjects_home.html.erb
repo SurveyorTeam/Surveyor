@@ -11,11 +11,17 @@
   </thead>
 
   <tbody>
-    <% @surveys.each do |survey| %>
+  <% if @valid_surveys != nil %>
+    <% @valid_surveys.each do |survey| %>
       <tr>
         <td><%= link_to "#{survey.name}", "surveys/#{survey.id}/subjects_survey" %></td>
       </tr>
     <% end %>
+    <% else %>
+    <h2> We see you havn't set any demographic info! Enter it below so we can match you with surveys relivant to you! </h2>
+    <% end %>
   </tbody>
 </table>
+<% if @can_see %>
 <%= link_to "set demographic", new_demographic_path %>
+<% end %>

@@ -25,13 +25,13 @@ Questions:
  <!-- <button class="add_range_button">New Range Question</button>-->
  <div>
 <%= f.label "Gender:"%> 
-<%= select_tag :gender, options_for_select(gender) %>
+<%= select_tag :gender, options_for_select(r_gender) %>
  <%= f.input :min_age %>
  <%= f.input :max_age %>
  <%= f.label "Education Level:"%> 
- <%= select_tag :education_level, options_for_select(education) %>
+ <%= select_tag :education_level, options_for_select(r_education) %>
  <%= f.label "Nationality:"%>  
- <%= select_tag :nationality, options_for_select(nations)%>
+ <%= select_tag :nationality, options_for_select(r_nations)%>
 </div>
   <div class="form-actions">
     <%= f.submit :submit %>

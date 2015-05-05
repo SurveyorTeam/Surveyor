@@ -69,7 +69,10 @@ class SurveysController < ApplicationController
   # POST /surveys
 
   def create
-    @survey = Survey.new(survey_params)
+    @survey = Survey.new(name: params["survey"]["name"],projects_id: params["survey"]["projects_id"],
+                          min_age: params["survey"]["min_age"], max_age: params["survey"]["max_age"],
+                            gender: params["gender"],education_level: params["education_level"],
+                            nationality: params["nationality"])
     # will need more catagories for hash searches as include more questions
     if @survey.save
       redirect_to @survey, notice: 'survey was successfully created.'
@@ -79,15 +82,55 @@ class SurveysController < ApplicationController
   end
 
   def subjects_home
-    @surveys = Survey.all
+   @can_see = visible_demo_button?
+   @subject_demographic = Demographic.where(user_id: current_subject.id)
+   puts
+   if(@subject_demographic.length > 0 )
+    puts "DEMO STUFF"
+    @subject_demographic.each do |d|
+     sub_gender = d.gender
+     gender_join = "INNER JOIN"
+     sub_education = d.education
+     edu_join = "INNER JOIN"
+     sub_nationality = d.nationality
+     nation_join = "INNER JOIN"
+     @valid_surveys = Survey.where(gender: sub_gender, education_level: sub_education, nationality: sub_nationality)
+     #CONCEPTUAL PROBLEM BELOW
+    #  if sub_gender == 'Any'
+    #   gender_join = "OUTER JOIN"
+    #  end
+    #  if sub_education == 'Any' 
+    #    sub_education = "OUTER JOIN" 
+    #  end
+    #  if sub_nationality == 'Any'
+    #   nation_join = "OUTER JOIN"
+    #  end
+    # valid_surveys1 = Survey.joins("#{gender_join} demographics ON demographics.gender = surveys.gender")
+    # valid_surveys2 = Survey.joins("#{edu_join} demographics ON demographic.education = surveys.education_level")
+    # valid_surveys3 = Survey.joins("#{nation_join} demographics ON demographics.nationality = surveys.nationality")
+    # s1_s2 = valid_surveys1.merge(valid_surveys2)
+    # @valid_surveys = s1_s2.merge(valid_surveys3)
+    end
+   end
+   @surveys = Survey.all
+  end
+
+  def visible_demo_button?
+     
+    made_demo = Demographic.where(user_id: current_subject.id, set_once: 1)
+    if made_demo.length >0
+      can_see = false
+    else
+      can_see = true
+    end
   end
 
   def create_survey
     puts "****************** #{params.inspect} *****************"
-    @survey = Survey.new(survey_params)
-    # will need more catagories for hash searches as include more questions
-    # also doesn't do order yet, how???
-    puts "********************************************, #{params}"
+        @survey = Survey.new(name: params["survey"]["name"],projects_id: params["survey"]["projects_id"],
+                          min_age: params["survey"]["min_age"], max_age: params["survey"]["max_age"],
+                            gender: params["gender"],education_level: params["education_level"],
+                            nationality: params["nationality"])
 
     text_questions = params['text']
     bool_questions = params['bool_text']
@@ -109,13 +152,6 @@ class SurveysController < ApplicationController
                           survey_id: @survey.id)
         end
         
-        # STUFF TIFFANY ADDED TO TRY TO GET THE DEMOGRAPHICS STUFF TO WORK
-        demo_gender = params['gender']
-        demo_education_level = params['education_level']
-        demo_nationality = params['nationality']
-        Demographic.create(gender: demo_gender,
-                           education: demo_education_level,
-                           nationality: demo_nationality)
       end
 
       redirect_to @survey, notice: 'Survey was successfully created.'
