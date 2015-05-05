@@ -21,6 +21,11 @@ class SurveysController < ApplicationController
     @current_survey = Survey.find(params[:id])
     @current_project = Project.find(@current_survey.projects_id)
     @current_questions = Question.where(survey_id: @current_survey.id)
+    @demo_gender = @current_survey.gender
+    @demo_min_age = @current_survey.min_age
+    @demo_max_age = @current_survey.max_age
+    @demo_education = @current_survey.education_level
+    @demo_nationality = @current_survey.nationality
   end
 
   # GET /surveys/new
@@ -28,65 +33,11 @@ class SurveysController < ApplicationController
     @survey = Survey.new
     @project_id = params[:id]
     @current_projects = Project.where(user_id: current_researcher.id)
-    @us_states = 
-        [
-          ['Alabama', 'AL'],
-          ['Alaska', 'AK'],
-          ['Arizona', 'AZ'],
-          ['Arkansas', 'AR'],
-          ['California', 'CA'],
-          ['Colorado', 'CO'],
-          ['Connecticut', 'CT'],
-          ['Delaware', 'DE'],
-          ['District of Columbia', 'DC'],
-          ['Florida', 'FL'],
-          ['Georgia', 'GA'],
-          ['Hawaii', 'HI'],
-          ['Idaho', 'ID'],
-          ['Illinois', 'IL'],
-          ['Indiana', 'IN'],
-          ['Iowa', 'IA'],
-          ['Kansas', 'KS'],
-          ['Kentucky', 'KY'],
-          ['Louisiana', 'LA'],
-          ['Maine', 'ME'],
-          ['Maryland', 'MD'],
-          ['Massachusetts', 'MA'],
-          ['Michigan', 'MI'],
-          ['Minnesota', 'MN'],
-          ['Mississippi', 'MS'],
-          ['Missouri', 'MO'],
-          ['Montana', 'MT'],
-          ['Nebraska', 'NE'],
-          ['Nevada', 'NV'],
-          ['New Hampshire', 'NH'],
-          ['New Jersey', 'NJ'],
-          ['New Mexico', 'NM'],
-          ['New York', 'NY'],
-          ['North Carolina', 'NC'],
-          ['North Dakota', 'ND'],
-          ['Ohio', 'OH'],
-          ['Oklahoma', 'OK'],
-          ['Oregon', 'OR'],
-          ['Pennsylvania', 'PA'],
-          ['Puerto Rico', 'PR'],
-          ['Rhode Island', 'RI'],
-          ['South Carolina', 'SC'],
-          ['South Dakota', 'SD'],
-          ['Tennessee', 'TN'],
-          ['Texas', 'TX'],
-          ['Utah', 'UT'],
-          ['Vermont', 'VT'],
-          ['Virginia', 'VA'],
-          ['Washington', 'WA'],
-          ['West Virginia', 'WV'],
-          ['Wisconsin', 'WI'],
-          ['Wyoming', 'WY']
-        ]
   end
 
   # GET /surveys/1/edit
   def edit
+    @current_survey = Survey.find(params[:id])
     @project_id = params[:id]
   end
 
@@ -157,6 +108,14 @@ class SurveysController < ApplicationController
                           boolean_option_2: bool_choice2[i],
                           survey_id: @survey.id)
         end
+        
+        # STUFF TIFFANY ADDED TO TRY TO GET THE DEMOGRAPHICS STUFF TO WORK
+        demo_gender = params['gender']
+        demo_education_level = params['education_level']
+        demo_nationality = params['nationality']
+        Demographic.create(gender: demo_gender,
+                           education: demo_education_level,
+                           nationality: demo_nationality)
       end
 
       redirect_to @survey, notice: 'Survey was successfully created.'
@@ -190,6 +149,13 @@ class SurveysController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def survey_params
-    params.require(:survey).permit(:name, :text, :projects_id, :gender, :min_age, :max_age)
+    params.require(:survey).permit(:name, :text, :projects_id, :gender, :min_age, :max_age, :education_level, :nationality)
   end
+
+  
+
+  # def get_signed_in
+  #   @signed_in = signed_in
+  # end
+
 end

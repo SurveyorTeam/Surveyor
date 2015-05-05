@@ -3,10 +3,10 @@ class CreateSurveys < ActiveRecord::Migration
     create_table :surveys do |t|
       t.string :name
       #demographic info
-      t.integer :gender
+      t.string :gender
       t.integer :min_age
       t.integer :max_age
-      t.integer :education_level
+      t.string :education_level
       t.string :nationality
 
       t.timestamps null: false

@@ -9,6 +9,7 @@ class DemographicsController < ApplicationController
 
   # GET /demographics/1
   def show
+    
   end
 
   # GET /demographics/new
