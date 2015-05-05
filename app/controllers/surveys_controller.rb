@@ -88,16 +88,32 @@ class SurveysController < ApplicationController
    if(@subject_demographic.length > 0 )
     puts "DEMO STUFF"
     @subject_demographic.each do |d|
+      
      sub_gender = d.gender
-     gender_join = "INNER JOIN"
+     gender_sym = "gender ="
+     if sub_gender == 'Any'
+       sub_gender = "-1"
+       gender_sym = "id > "
+     end
+     
      sub_education = d.education
-     edu_join = "INNER JOIN"
+     edu_sym = "education_level ="
+     if sub_education == 'Any'
+       sub_education = "-1"
+       edu_sym = "id >"
+     end
+     
      sub_nationality = d.nationality
-     nation_join = "INNER JOIN"
-     @valid_surveys = Survey.where(gender: sub_gender, education_level: sub_education, nationality: sub_nationality)
+     nation_sym = "nationality ="
+     if sub_nationality == 'Any'
+       sub_nationality = "-1"
+       nation_sym = "id >"
+     end
+     
+     @valid_surveys = Survey.where(" #{gender_sym}  ? AND #{edu_sym} AND ? #{nation_sym} ? ",sub_gender,sub_education,sub_nationality )
      #CONCEPTUAL PROBLEM BELOW
     #  if sub_gender == 'Any'
-    #   gender_join = "OUTER JOIN"
+    #   gender_join = "OUTER JOIN" (gender: sub_gender, education_level: sub_education, nationality: sub_nationality)
     #  end
     #  if sub_education == 'Any' 
     #    sub_education = "OUTER JOIN" 
@@ -117,7 +133,7 @@ class SurveysController < ApplicationController
 
   def visible_demo_button?
      
-    made_demo = Demographic.where(user_id: current_subject.id, set_once: 1)
+    made_demo = Demographic.where(user_id: current_subject.id)
     if made_demo.length >0
       can_see = false
     else

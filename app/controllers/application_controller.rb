@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
 
   def made_demo?
     begin 
-      made_demo = Demographic.where(user_id: current_subject.id, set_once: 1)
+      made_demo = Demographic.where(user_id: current_subject.id)
     rescue
       made_demo = false
     end
