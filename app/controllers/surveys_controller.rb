@@ -84,51 +84,12 @@ class SurveysController < ApplicationController
   def subjects_home
    @can_see = visible_demo_button?
    @subject_demographic = Demographic.where(user_id: current_subject.id)
-   puts
+   all_surveys = Survey.all
    if(@subject_demographic.length > 0 )
-    puts "DEMO STUFF"
-    @subject_demographic.each do |d|
-      
-     sub_gender = d.gender
-     gender_sym = "gender ="
-     if sub_gender == 'Any'
-       sub_gender = "-1"
-       gender_sym = "id > "
+     @subject_demographic.each do |d|
+       @valid_surveys = Survey.where("gender = ? OR gender = ? AND education_level = ? OR education_level = ? AND nationality = ? OR nationality = ?",d.gender, 'Any',d.education,'Any',d.nationality,'Any')
      end
-     
-     sub_education = d.education
-     edu_sym = "education_level ="
-     if sub_education == 'Any'
-       sub_education = "-1"
-       edu_sym = "id >"
-     end
-     
-     sub_nationality = d.nationality
-     nation_sym = "nationality ="
-     if sub_nationality == 'Any'
-       sub_nationality = "-1"
-       nation_sym = "id >"
-     end
-     
-     @valid_surveys = Survey.where(" #{gender_sym}  ? AND #{edu_sym} AND ? #{nation_sym} ? ",sub_gender,sub_education,sub_nationality )
-     #CONCEPTUAL PROBLEM BELOW
-    #  if sub_gender == 'Any'
-    #   gender_join = "OUTER JOIN" (gender: sub_gender, education_level: sub_education, nationality: sub_nationality)
-    #  end
-    #  if sub_education == 'Any' 
-    #    sub_education = "OUTER JOIN" 
-    #  end
-    #  if sub_nationality == 'Any'
-    #   nation_join = "OUTER JOIN"
-    #  end
-    # valid_surveys1 = Survey.joins("#{gender_join} demographics ON demographics.gender = surveys.gender")
-    # valid_surveys2 = Survey.joins("#{edu_join} demographics ON demographic.education = surveys.education_level")
-    # valid_surveys3 = Survey.joins("#{nation_join} demographics ON demographics.nationality = surveys.nationality")
-    # s1_s2 = valid_surveys1.merge(valid_surveys2)
-    # @valid_surveys = s1_s2.merge(valid_surveys3)
-    end
    end
-   @surveys = Survey.all
   end
 
   def visible_demo_button?
