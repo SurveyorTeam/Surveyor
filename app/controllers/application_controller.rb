@@ -31,4 +31,18 @@ class ApplicationController < ActionController::Base
       false
     end
   end
+
+  def made_demo?
+    begin 
+      made_demo = Demographic.where(user_id: current_subject.id, set_once: 1)
+    rescue
+      made_demo = false
+    end
+    if made_demo.length >0
+      flash[:error] = 'You can not set demographic info'
+      redirect_to subjects_home_path
+    else
+     true
+    end
+  end 
 end

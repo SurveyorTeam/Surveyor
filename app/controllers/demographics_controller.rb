@@ -1,6 +1,7 @@
 class DemographicsController < ApplicationController
   before_action :set_demographic, only: [:show, :edit, :update, :destroy]
-  # before_action :authenticate_subject!
+  before_action :authenticate_subject!
+  before_filter :made_demo?
 
   # GET /demographics
   def index
@@ -23,10 +24,14 @@ class DemographicsController < ApplicationController
 
   # POST /demographics
   def create
-    @demographic = Demographic.new(demographic_params)
+    #why demographic_params doesn't get everything is beyond me
+    @demographic = Demographic.new(name: params["demographic"]["name"],gender: params["gender"],
+                                  age: params["demographic"]["age"],education: params["education"],
+                                  nationality: params["nationality"],set_once: params["demographic"]["set_once"],
+                                  user_id: params["demographic"]["user_id"] )
 
     if @demographic.save
-      redirect_to @demographic, notice: 'Demographic was successfully created.'
+      redirect_to subjects_home_path, notice: 'Demographic was successfully created.'
     else
       render :new
     end
@@ -55,6 +60,6 @@ class DemographicsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def demographic_params
-      params.require(:demographic).permit(:name, :gender, :age, :education, :nationality, :user_id)
+      params.require(:demographic).permit(:name, :gender, :age, :education, :nationality, :user_id,:set_once)
     end
 end
