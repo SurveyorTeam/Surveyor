@@ -1,27 +1,29 @@
-<p id="notice"><%= notice %></p>
+<div class = "list-view">
+  <p id="notice"><%= notice %></p>
 
-<h1>Listing Surveys</h1>
+  <h1>Listing Surveys</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-  <% if @valid_surveys != nil %>
-    <% @valid_surveys.each do |survey| %>
+  <table>
+    <thead>
       <tr>
-        <td><%= link_to "#{survey.name}", "surveys/#{survey.id}/subjects_survey" %></td>
+        <th>Title</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-    <% else %>
-    <h2> We see you havn't set any demographic info! Enter it below so we can match you with surveys relivant to you! </h2>
-    <% end %>
-  </tbody>
-</table>
-<% if @can_see %>
-<%= link_to "set demographic", new_demographic_path %>
-<% end %>
+    </thead>
+
+    <tbody>
+    <% if @valid_surveys != nil %>
+      <% @valid_surveys.each do |survey| %>
+        <tr>
+          <td><%= link_to "#{survey.name}", "surveys/#{survey.id}/subjects_survey" %></td>
+        </tr>
+      <% end %>
+      <% else %>
+      <h2> We see you havn't set any demographic info! Enter it below so we can match you with surveys relivant to you! </h2>
+      <% end %>
+    </tbody>
+  </table>
+  <% if @can_see %>
+    <button><%= link_to "Set Demographic", new_demographic_path %></button>
+  <% end %>
+</div>
