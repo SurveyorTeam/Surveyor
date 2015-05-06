@@ -87,9 +87,11 @@ class SurveysController < ApplicationController
    all_surveys = Survey.all
    if(@subject_demographic.length > 0 )
      @subject_demographic.each do |d|
-       @valid_surveys = Survey.where("gender = ? OR gender = ? AND education_level = ? OR education_level = ? AND nationality = ? OR nationality = ?",d.gender, 'Any',d.education,'Any',d.nationality,'Any')
+       @valid_surveys = Survey.where("((gender = ? OR gender = ? ) AND (education_level = ? OR education_level = ?)) AND (nationality = ? OR nationality = ?)",d.gender, 'Any',d.education,'Any',d.nationality,'Any')
      end
    end
+   puts "ddddddddd"
+   puts @valid_surveys.length
   end
 
   def visible_demo_button?
