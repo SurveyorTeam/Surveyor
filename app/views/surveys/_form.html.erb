@@ -1,41 +1,46 @@
 <%= simple_form_for(@survey, :url => "/create_survey",:html => {:method => :get}) do |f| %>
 
   <div class="form-inputs">
-	  Survey Name:
-	  <br>
+	  <p>Survey Name</p>
     <%= f.text_field :name %>
-	
-</div>
-Questions:
- <div class="input_fields_wrap">
-	 <div>Text Question:<input type="text" name="text[]"></div>
-	 <div><input style="display:none;" type="text" name="bool_text[]"></div>
-	 <div><input style="display:none;" type="text" name="bool_choice1[]"></div>
-	 <div><input style="display:none;" type="text" name="bool_choice2[]"></div>
-	 <div><input style="display:none;" type="text" name="range_text[]"></div>
-	 <div><input style="display:none;" type="text" name="radio_choice1[]"></div>
-	 <div><input style="display:none;" type="text" name="radio_choice2[]"></div>
-	 <div><input style="display:none;" type="text" name="radio_choice3[]"></div>
-	 <div><input style="display:none;" type="text" name="radio_choice4[]"></div>
-	 <div><input style="display:none;" type="text" name="radio_choice5[]"></div>
-</div>
-  <%= f.input :projects_id,:as => :hidden,  :input_html => { :value => "#{@project_id}" } %>
-  <button class="add_field_button">New Question</button>
-  <button class="add_field_button_bool">New True/False Question</button>
- <!-- <button class="add_range_button">New Range Question</button>-->
- <div>
-<%= f.label "Gender:"%> 
-<%= select_tag :gender, options_for_select(r_gender) %>
- <%= f.input :min_age %>
- <%= f.input :max_age %>
- <%= f.label "Education Level:"%> 
- <%= select_tag :education_level, options_for_select(r_education) %>
- <%= f.label "Nationality:"%>  
- <%= select_tag :nationality, options_for_select(r_nations)%>
-</div>
-  <div class="form-actions">
-    <%= f.submit :submit %>
   </div>
+
+  <div class="input_fields_wrap sub-section">
+  <h4>Questions</h4>
+  	 <p>Text Question:<input type="text" name="text[]"></p>
+  	 <div><input style="display:none;" type="text" name="bool_text[]"></div>
+  	 <div><input style="display:none;" type="text" name="bool_choice1[]"></div>
+  	 <div><input style="display:none;" type="text" name="bool_choice2[]"></div>
+  	 <div><input style="display:none;" type="text" name="range_text[]"></div>
+  	 <div><input style="display:none;" type="text" name="radio_choice1[]"></div>
+  	 <div><input style="display:none;" type="text" name="radio_choice2[]"></div>
+  	 <div><input style="display:none;" type="text" name="radio_choice3[]"></div>
+  	 <div><input style="display:none;" type="text" name="radio_choice4[]"></div>
+  	 <div><input style="display:none;" type="text" name="radio_choice5[]"></div>
+  </div>
+
+  <div class = "options">
+    <%= f.input :projects_id,:as => :hidden,  :input_html => { :value => "#{@project_id}" } %>
+    <button class="add_field_button">New Question</button>
+    <button class="add_field_button_bool">New True/False Question</button>
+  </div>
+
+  <div class = "sub-section">
+    <h2>Now, select what kind of people can respond.</h2>
+    <%= f.label "Gender:"%>
+    <%= select_tag :gender, options_for_select(r_gender) %>
+    <%= f.input :min_age %>
+    <%= f.input :max_age %>
+    <%= f.label "Education Level:"%>
+    <%= select_tag :education_level, options_for_select(r_education) %>
+    <%= f.label "Nationality:"%>
+    <%= select_tag :nationality, options_for_select(r_nations)%>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, 'Save this survey!' %>
+  </div>
+
 <% end %>
 
 <script type='text/javascript'>
@@ -48,7 +53,5 @@ var counter=0
 		e.preventDefault();
 		$(".input_fields_wrap").append("<div>True/False Prompt <input type='text' name='bool_text[]' />Choice 1<input type='text' name='bool_choice1[]' />Choice 2<input type='text' name='bool_choice2[]' /><a href='#' class='remove_field'>Remove</a></div>");
 	});
-	
+
  </script>
-	<!-- "<div>Range Question:<ol><li><input type='text' name='radio_choice1[]'/></li>
-			</ol><a href='#' class='remove_field'>Remove</a></div>" -->

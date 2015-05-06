@@ -44,7 +44,11 @@
             </button>
           </form>
         </div>
-        <a href="/login" class="sign-up">Sign Up</a>
+
+        <% if !(current_subject || current_researcher) %>
+          <a href="/login" class="sign-up">Sign Up</a>
+        <% end %>
+
       </div>
     </div>
   </header>
