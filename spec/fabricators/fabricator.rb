@@ -3,9 +3,10 @@ race = ['Black', 'White', 'Blue']
 nationality = ['American', 'British', 'Portuguese']
 organizations = ['Brandeis','MIT','Scotland Yard','UMass','Berkley']
 Fabricator(:user) do
-	name{Faker::Name.first_name}
-	email{Faker::Internet.email}
+	name{'Josh'}
+	email{'reseacher@surveyor.com'}
 	password{"password"}
+  role{0}
 	#organization{organizations[rand(6)]}
 end
 Fabricator(:project) do

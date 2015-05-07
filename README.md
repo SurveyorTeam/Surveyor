@@ -2,6 +2,8 @@
 
 [![Code Climate](https://codeclimate.com/github/SurveyorTeam/Surveyor/badges/gpa.svg)](https://codeclimate.com/github/SurveyorTeam/Surveyor)
 
+As of May 6th, this projec is complete.
+
 ## Getting Started
 
 After you have cloned this repo, run this setup script to set up your machine

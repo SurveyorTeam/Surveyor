@@ -1,0 +1,15 @@
+.new {
+  @include outer-container;
+  max-width: 800px;
+  padding-top: 4vh;
+  padding-bottom: 4vh;
+
+  .options {
+    padding-bottom: 2vh;
+    padding-top: 2vh;
+  }
+}
+
+.sub-section {
+  padding-top: 2vh;
+}

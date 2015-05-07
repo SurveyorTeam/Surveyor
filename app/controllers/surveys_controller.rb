@@ -84,40 +84,19 @@ class SurveysController < ApplicationController
   def subjects_home
    @can_see = visible_demo_button?
    @subject_demographic = Demographic.where(user_id: current_subject.id)
-   puts
+   all_surveys = Survey.all
    if(@subject_demographic.length > 0 )
-    puts "DEMO STUFF"
-    @subject_demographic.each do |d|
-     sub_gender = d.gender
-     gender_join = "INNER JOIN"
-     sub_education = d.education
-     edu_join = "INNER JOIN"
-     sub_nationality = d.nationality
-     nation_join = "INNER JOIN"
-     @valid_surveys = Survey.where(gender: sub_gender, education_level: sub_education, nationality: sub_nationality)
-     #CONCEPTUAL PROBLEM BELOW
-    #  if sub_gender == 'Any'
-    #   gender_join = "OUTER JOIN"
-    #  end
-    #  if sub_education == 'Any' 
-    #    sub_education = "OUTER JOIN" 
-    #  end
-    #  if sub_nationality == 'Any'
-    #   nation_join = "OUTER JOIN"
-    #  end
-    # valid_surveys1 = Survey.joins("#{gender_join} demographics ON demographics.gender = surveys.gender")
-    # valid_surveys2 = Survey.joins("#{edu_join} demographics ON demographic.education = surveys.education_level")
-    # valid_surveys3 = Survey.joins("#{nation_join} demographics ON demographics.nationality = surveys.nationality")
-    # s1_s2 = valid_surveys1.merge(valid_surveys2)
-    # @valid_surveys = s1_s2.merge(valid_surveys3)
-    end
+     @subject_demographic.each do |d|
+       @valid_surveys = Survey.where("((gender = ? OR gender = ? ) AND (education_level = ? OR education_level = ?)) AND (nationality = ? OR nationality = ?)",d.gender, 'Any',d.education,'Any',d.nationality,'Any')
+     end
    end
-   @surveys = Survey.all
+   #puts "ddddddddd"
+   #puts @valid_surveys.length
   end
 
   def visible_demo_button?
      
-    made_demo = Demographic.where(user_id: current_subject.id, set_once: 1)
+    made_demo = Demographic.where(user_id: current_subject.id)
     if made_demo.length >0
       can_see = false
     else

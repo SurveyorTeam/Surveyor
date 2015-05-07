@@ -20,20 +20,20 @@ module DemographicHelper
   def education
     [
       [],
-      ['High School/GED'],
+      ['High School or GED'],
       ['Associates Degree'],
-      ["Bachelor's Degree"],
-      ["Master's Degree"],
+      ["Bachelor Degree"],
+      ["Master Degree"],
       ["Advanced"]
     ]
   end
   def r_education
     [
       [],
-      ['High School/GED'],
+      ['High School or GED'],
       ['Associates Degree'],
-      ["Bachelor's Degree"],
-      ["Master's Degree"],
+      ["Bachelor Degree"],
+      ["Master Degree"],
       ["Advanced"],
       ["Any"],
     ]

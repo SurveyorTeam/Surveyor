@@ -27,7 +27,7 @@ class DemographicsController < ApplicationController
     #why demographic_params doesn't get everything is beyond me
     @demographic = Demographic.new(name: params["demographic"]["name"],gender: params["gender"],
                                   age: params["demographic"]["age"],education: params["education"],
-                                  nationality: params["nationality"],set_once: params["demographic"]["set_once"],
+                                  nationality: params["nationality"],
                                   user_id: params["demographic"]["user_id"] )
 
     if @demographic.save
