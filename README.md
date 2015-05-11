@@ -2,7 +2,7 @@
 
 [![Code Climate](https://codeclimate.com/github/SurveyorTeam/Surveyor/badges/gpa.svg)](https://codeclimate.com/github/SurveyorTeam/Surveyor)
 
-As of May 6th, this projec is complete.
+As of May 6th, this project is complete.
 
 ## Getting Started
 
